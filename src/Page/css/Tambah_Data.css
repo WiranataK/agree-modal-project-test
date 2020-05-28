@@ -1,0 +1,41 @@
+#buttonadddata{
+    position: absolute;
+    width: 194px;
+    height: 59px;
+    left: 85%;
+    top: 80%;
+    
+    /* cyan */
+    
+    background: #2BCDC1;
+    border-radius: 50px;
+    border-color: #2BCDC1;
+
+    font-style: "Open Sans";
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    
+    /* White */
+    
+    color: #FFFFFF;
+}
+
+#buttonadddata:hover{
+    background: rgb(0, 102, 95);
+    border-radius: 50px;
+    border-color: rgb(0, 102, 95);
+}
+
+#buttonadddata:active{
+    background: rgb(0, 102, 95);
+    border-radius: 50px;
+    border-color: rgb(0, 102, 95);
+}
