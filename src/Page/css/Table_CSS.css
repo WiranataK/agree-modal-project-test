@@ -1,0 +1,53 @@
+.header{
+    position: absolute;
+    width: 55%;
+    height: 65%;
+    margin-left: 32%;
+    margin-top: 2%;
+    
+    font-style: "Open Sans";
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    /* identical to box height */
+    
+    letter-spacing: 0.03em;
+    
+    /* magenta */
+    
+    color: #F66095;
+}
+
+.head{
+    font-style: "Open Sans";
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    letter-spacing: 0.03em;
+    
+    /* black */
+    
+    color: #393E46;
+}
+
+.istable{
+    position: absolute;
+    width: 55%;
+    height: 65%;
+    left: 30%;
+    top: 10%;
+
+    font-style: "Open Sans";
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    
+    align-items: center;
+    letter-spacing: 0.03em;
+    
+    /* black */
+    
+    color: #393E46;
+}
