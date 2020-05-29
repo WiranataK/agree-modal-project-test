@@ -33,10 +33,10 @@ export default class Login extends React.Component{
                             <img id="logo" src={Logo}/>
                             <Form>
                                 <Form.Group>
-                                    <Form.Control id="username" type="username" placeholder="Username"></Form.Control>
-                                    <Form.Control id="password" type={this.state.type} placeholder="Password"></Form.Control>
+                                    <Form.Control id="username" type="username" placeholder="Username" required></Form.Control>
+                                    <Form.Control id="password" type={this.state.type} placeholder="Password" required></Form.Control>
                                     <icons id="showhide" onClick={this.showHide}>
-                                        {this.state.type === 'password' ? <FaEye/> : <FaEyeSlash/>}
+                                        {this.state.type === 'password' ? <FaEyeSlash/> : <FaEye/>}
                                     </icons>
                                     <Button id="buttonmasuk" variant="primary" type="submit">Masuk</Button>
                                 </Form.Group>
