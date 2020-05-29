@@ -1,0 +1,176 @@
+.container{
+    position: absolute;
+    left: 254px;
+}
+
+h1 {
+    position: absolute;
+    width: 100%;
+    height: 19px;
+    top: 243px;
+    
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+    justify-content: center;
+    
+    /* Gray 2 */
+    
+    color: #4F4F4F;
+}
+
+#logo{
+    position: absolute;
+    height: 65px;
+    left: calc(50% - 141px/2 + 1px);
+    top: 265px;
+}
+
+#username{
+    position: absolute;
+    width: 365px;
+    height: 39px;
+    top: 377px;
+    left: 20%;
+    
+    background: #FFFFFF;
+    /* Gray 4 */
+    
+    font-family: sans-serif;
+    border: 4px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(189, 189, 189, 0.15);
+    border-radius: 10px;
+}
+
+#username:focus{
+    border-color: #38817A;
+}
+
+#password{
+    position: absolute;
+    width: 365px;
+    height: 39px;
+    left: 20%;
+    top: 446px;
+    
+    background: #FFFFFF;
+    /* Gray 4 */
+    
+    font-family: sans-serif;
+    border: 4px solid #BDBDBD;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(189, 189, 189, 0.15);
+    border-radius: 10px;
+}
+
+#password:focus{
+    border-color: #38817A;
+}
+
+#showhide{
+    position: absolute;
+    height: 39px;
+    left: 78%;
+    top: 450px;
+}
+
+::placeholder{
+    position: absolute;
+    width: 63px;
+    height: 16px;
+    left: 11px;
+    top: 14px;
+    
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    
+    /* Gray 4 */
+    
+    color: #BDBDBD;
+}
+
+#buttonmasuk{
+    position: absolute;
+    width: 365px;
+    height: 45px;
+    left: 20%;
+    top: 532px;
+    
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    justify-content: center;
+    
+    /* White */
+    
+    color: #FFFFFF;
+
+    /* green */
+    
+    background: #38817A;
+    border-radius: 10px;
+    border-color: #38817A;
+}
+
+h2{
+    position: absolute;
+    width: 100%;
+    height: 16px;
+    top: 597px;
+    
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.03em;
+    justify-content: center;
+    
+    color: #000000;    
+}
+
+#buttonregister{
+    position: absolute;
+    width: 100%;
+    height: 16px;
+    top: 618px;
+    
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.03em;
+    justify-content: center;
+    
+    /* cyan */
+    
+    color: #2BCDC1;
+}
+
+#farmerlogo{
+    margin-top: 50%;
+}
