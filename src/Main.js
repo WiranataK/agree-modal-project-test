@@ -1,12 +1,12 @@
 import React from 'react';
 import './Main.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Sidebar } from './Page/Sidebar';
-import { Tambah_Data } from './Page/Tambah_Data';
-import { Identification_Screen } from './Page/Identification_Screen';
-import { Partner_Address } from './Page/Partner_Address';
-import { Partner_Communication } from './Page/Partner_Communication';
-import { Member_Screen } from './Page/Member_Screen';
+import { Sidebar } from './Page/Components/Sidebar';
+import { Tambah_Data } from './Page/Components/Tambah_Data';
+import { Identification_Screen } from './Page/Components/Identification_Screen';
+import { Partner_Address } from './Page/Components/Partner_Address';
+import { Partner_Communication } from './Page/Components/Partner_Communication';
+import { Member_Screen } from './Page/Components/Member_Screen';
 
 function Main() {
   return (
