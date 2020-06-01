@@ -4,7 +4,6 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Logo from '../Assets/logo.png';
 import FarmerLogo from '../Assets/farmer.png';
-import { icons } from 'react-icons/lib/cjs';
 
 export default class Login extends React.Component{
     constructor(props){
