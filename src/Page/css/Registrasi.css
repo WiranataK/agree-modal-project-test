@@ -80,7 +80,8 @@
     
     /* Gray 4 */
     
-    background: #BDBDBD;
+    background: #2BCDC1;
+    box-shadow: none;
     border-radius: 34px;
     border-color: #BDBDBD;
 
@@ -101,7 +102,6 @@
     color: #FFFFFF;
 }
 
-#button:focus{
-    background: #2BCDC1;
-    box-shadow: none;
+#button:disabled{
+    background: #BDBDBD;
 }
