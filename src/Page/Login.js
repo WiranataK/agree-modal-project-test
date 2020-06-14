@@ -34,7 +34,7 @@ export default class Login extends React.Component{
                                 <Form.Group>
                                     <Form.Control id="username" type="username" placeholder="Username" required></Form.Control>
                                     <Form.Control id="password" type={this.state.type} placeholder="Password" required></Form.Control>
-                                    <icons id="showhide" onClick={this.showHide}>
+                                    <icons id="showhide" onClick={this.showHide} style={{cursor:'pointer'}}>
                                         {this.state.type === 'password' ? <FaEyeSlash/> : <FaEye/>}
                                     </icons>
                                     <Button id="buttonmasuk" variant="primary" type="submit">Masuk</Button>
