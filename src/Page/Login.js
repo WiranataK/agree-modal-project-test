@@ -25,7 +25,7 @@ export default class Login extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <Container id="container">
+                <Container>
                     <Row>
                         <Col>
                             <h1>Selamat datang di</h1>
