@@ -5,7 +5,7 @@ import { Button, Row, Col } from 'react-bootstrap';
 export default class BacktoLogin extends React.Component{
     render(){
         return(
-                <Button variant="link">
+                <Button variant="link" href="../Login.js">
                     <Row id="buttonframe">
                         <Col sm="auto">
                         <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +20,6 @@ export default class BacktoLogin extends React.Component{
                         </Col>
                     </Row>
                 </Button>
-        );
+            );
     }
 }
