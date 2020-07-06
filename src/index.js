@@ -3,10 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
+import Registrasi from './Page/Components/RegistrasiTahap1'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Login/>
+        </Route>
+        <Route path="/registrasi">
+          <Registrasi/>
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
