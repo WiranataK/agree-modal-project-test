@@ -1,6 +1,8 @@
 import React from 'react';
 import '../css/RegistrasiTahap1.css';
 import { Container, Button, Row, Col } from 'react-bootstrap';
+import Cookies from 'universal-cookie';
+
 
 export default class Registrasi extends React.Component{
     constructor(props){

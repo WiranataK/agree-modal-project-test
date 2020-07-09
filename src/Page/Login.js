@@ -6,8 +6,9 @@ import Logo from '../Assets/logo.png';
 import FarmerLogo from '../Assets/farmer.png';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { withRouter } from 'react-router-dom';
 
-export default class Login extends React.Component{
+class Login extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -44,13 +45,16 @@ export default class Login extends React.Component{
           const today = new Date()
           const tomorrow = new Date(today)
           tomorrow.setDate(tomorrow.getDate() + 1)
-          cookies.set('refreshToken', res.data.refresh, { path: '/', expires: tomorrow});
-
-          cookies.set('accessToken', res.data.access, { path: '/', maxAge: 2*60*60});
+          cookies.set('refreshToken', res.data.refresh, { path: '/', expires: tomorrow, secure: true});
+          cookies.set('accessToken', res.data.access, { path: '/', maxAge: 2*60*60, secure: true});
           // Example on how to get cookies
-          // console.log(cookies.get('refreshToken'));
-          // console.log(cookies.get('accessToken'));
+          console.log(cookies.get('refreshToken'));
+          console.log(cookies.get('accessToken'));
+          this.props.history.push('/registrasi');
         })
+        .catch(error => {
+            console.log(error.response);
+        });
     }
 
 
@@ -84,3 +88,5 @@ export default class Login extends React.Component{
         );
     }
 }
+
+export default withRouter(Login); // <--- make sure to wrap your component with `withRouter()`
