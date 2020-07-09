@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
+import RegistrasiTahap1 from './Page/RegistrasiTahap1';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login/>
+    <RegistrasiTahap1/>
   </React.StrictMode>,
   document.getElementById('root')
 );
