@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Container } from 'react-bootstrap';
 import '../css/Table_CSS.css';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 
 export const Table_Partner = () => (
     <React.Fragment>

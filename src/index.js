@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
-import Registrasi from './Page/Components/RegistrasiTahap1'
+import Main from './Page/Main';
+import Dummy from './Page/AxiosDummy';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,9 @@ ReactDOM.render(
         </Route>
         <Route path="/Home">
           <Main/>
+        </Route>
+        <Route path="/Dummy">
+          <Dummy/>
         </Route>
       </Switch>
     </Router>
