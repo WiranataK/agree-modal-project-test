@@ -1,10 +1,9 @@
 import React from 'react';
-import '../css/RegistrasiTahap1.css';
+import './css/RegistrasiTahap1.css';
 import { Container, Button, Row, Col } from 'react-bootstrap';
-import Cookies from 'universal-cookie';
+import { BacktoLogin } from './Components/BacktoLogin';
 
-
-export default class Registrasi extends React.Component{
+export default class RegistrasiTahap1 extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -24,8 +23,9 @@ export default class Registrasi extends React.Component{
     render(){
         return(
             <React.Fragment>
+                <BacktoLogin/>
                 <Container id="container">
-                    <h1 id="headert1">Pilih Jenis Member Agree</h1>
+                    <h1 id="header1">Pilih Jenis Member Agree</h1>
                         <Container id="container2">
                             <Button id="option" name="option" variant="outline-primary" onFocus={this.disabledButton}>Individu</Button>{' '}
                             <Button id="option" name="option" variant="outline-primary" onFocus={this.disabledButton}>Individu Berusaha</Button>{' '}

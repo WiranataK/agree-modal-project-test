@@ -18,8 +18,8 @@ ReactDOM.render(
         <Route exact path="/">
           <Login/>
         </Route>
-        <Route path="/registrasi">
-          <Registrasi/>
+        <Route path="/Home">
+          <Main/>
         </Route>
       </Switch>
     </Router>

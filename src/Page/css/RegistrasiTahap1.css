@@ -1,14 +1,14 @@
 #container{
-    position: center;
     width: 474px;
-    height: 613px;
-    margin-top: 150px;
+    height: 500px;
+    margin-top: 230px;
 }
 
-#headert1{
+#header1{
     width: 474px;
     height: 49px;
-    margin-bottom: 38px;
+    margin-left: 0px;
+    top: 205px;
     
     font-style: "Open Sans";
     font-weight: bold;
@@ -28,9 +28,9 @@
 
 #container2{
     width: 435px;
-    height: auto;
-    left: 19px;
-    top: 87px;
+    height: 400px;
+    margin-left: 19px;
+    margin-top: 87px;    
 }
 
 #option{
@@ -75,8 +75,7 @@
 #button{
     width: 245px;
     height: 59px;
-    margin-top: 45px;
-    margin-left: 105px;
+    margin-left: 115px;
     padding-left: 10%;
     
     /* Gray 4 */
