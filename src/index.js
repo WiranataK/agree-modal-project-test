@@ -4,10 +4,25 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
 import Main from './Page/Main';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main/>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Login/>
+        </Route>
+        <Route path="/Home">
+          <Main/>
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
