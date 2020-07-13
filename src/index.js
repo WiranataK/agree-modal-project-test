@@ -13,6 +13,7 @@ import {
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <Main/> */}
     <Router>
       <Switch>
         <Route exact path="/">
