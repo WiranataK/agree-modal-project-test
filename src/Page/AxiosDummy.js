@@ -1,30 +1,30 @@
 import React from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { withRouter } from 'react-router-dom';
 
-export default class PersonList extends React.Component {
-  state = {
-    persons: []
-  }
+function iniData(){
+  let cookies = new Cookies();
+  let token = cookies.get('accessToken');
+  console.log(token)
+  const AuthStr = 'Bearer '.concat(token); 
+  axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partner', { headers: { Authorization: AuthStr } })
+   .then(response => {
+      // If request is good...
+     console.log(response.data);
+   })
+   .catch((error) => {
+      console.log('error ' + error);
+   });
+};
 
-  componentDidMount() {
-    const cookies = new Cookies();
-    console.log(cookies.get('accessToken'));
-    axios.get(process.env.REACT_APP_BACKEND_URL+`/api/object`,{
-        headers: {
-          authorization: cookies.get('accessToken')
-        }
-      }).then(res => {
-        const persons = res.data;
-        this.setState({ persons });
-      })
-  }
-
-  render() {
-    return (
-      <ul>
-        { this.state.persons.map(person => <li>{person.name}</li>)}
-      </ul>
-    )
+class AxiosDummy extends React.Component {
+    render(){
+      return(
+        <React.Fragment>
+          <button onClick={iniData}>Lihat Data</button>
+        </React.Fragment>
+      );
   }
 }
+export default withRouter(AxiosDummy); // <--- make sure to wrap your component with `withRouter()`

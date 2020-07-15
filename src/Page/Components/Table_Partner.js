@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Table, Container } from 'react-bootstrap';
 import '../css/Table_CSS.css';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
 import { FaUserFriends, FaPen } from 'react-icons/fa';
 
 export const Table_Partner = () => (

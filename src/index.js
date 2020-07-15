@@ -4,7 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
 import Main from './Page/Main';
-import Dummy from './Page/AxiosDummy';
+import AxiosDummy from './Page/AxiosDummy';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,7 +24,7 @@ ReactDOM.render(
           <Main/>
         </Route>
         <Route path="/Dummy">
-          <Dummy/>
+          <AxiosDummy/>
         </Route>
       </Switch>
     </Router>
