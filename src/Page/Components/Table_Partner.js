@@ -2,6 +2,9 @@ import React from 'react';
 import { Button, Table, Container } from 'react-bootstrap';
 import '../css/Table_CSS.css';
 import { FaUserFriends, FaPen } from 'react-icons/fa';
+import Cookies from 'universal-cookie';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 var dummyData = [
     {
@@ -32,8 +35,28 @@ var dummyData = [
             "Individu"
         ]
     }];
+
 var index = 0;
 
+var arrPartner = [];
+
+function iniData(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token); 
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
+     .then(response => {
+        // If request is good...
+       console.log('berhasil')
+       arrPartner = response.data;
+       console.log(arrPartner)
+     })
+     .catch((error) => {
+        console.log('error ' + error);
+     });
+  };
+
+iniData()
 export const Table_Partner = () => (
     <React.Fragment>
         <Container className="containers" fluid>
@@ -57,7 +80,7 @@ export const Table_Partner = () => (
                 </thead>
                 <tbody className="body">
                     {
-                        dummyData.map((element) => {
+                        arrPartner.map((element) => {
                             console.log(index);
                             index += 1;
                             return (

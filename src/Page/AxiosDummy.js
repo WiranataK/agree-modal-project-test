@@ -8,7 +8,7 @@ function iniData(){
   let token = cookies.get('accessToken');
   console.log(token)
   const AuthStr = 'Bearer '.concat(token); 
-  axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partner', { headers: { Authorization: AuthStr } })
+  axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
    .then(response => {
       // If request is good...
      console.log(response.data);
