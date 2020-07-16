@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Table, Container } from 'react-bootstrap';
+import { Button, Table, Container, Row, Col } from 'react-bootstrap';
 import '../css/Table_CSS.css';
 import { FaUserFriends, FaPen } from 'react-icons/fa';
 import Cookies from 'universal-cookie';
@@ -61,28 +61,32 @@ function iniData(){
 
 export const Table_Partner = () => (
     <React.Fragment>
-        <Container className="containers" fluid>
-            <h1>Daftar Partner</h1>
-            <Table className="table" responsive striped hover variant="light" id="tablePartner" onChange={iniData()}>
-                <thead className="head">
-                    <tr>
-                        <th>No</th>
-                        <th>Jenis Partner</th>
-                        <th>Nomor Partner</th>
-                        <th>Nama</th>
-                        <th>Nama Panggilan</th>
-                        <th>Tempat Lahir</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
-                        <th>Bahasa</th>
-                        <th>Kewarganegaraan</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody className="body">
-                </tbody>
-            </Table>
-        </Container>
+        <Row className="containers">
+            <Row>
+                <h1>Daftar Partner</h1>
+            </Row>
+            <Row>
+                <Table className="table" responsive striped hover variant="light" id="tablePartner" onChange={iniData()}>
+                    <thead className="head">
+                        <tr>
+                            <th>No</th>
+                            <th>Jenis Partner</th>
+                            <th>Nomor Partner</th>
+                            <th>Nama</th>
+                            <th>Nama Panggilan</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Agama</th>
+                            <th>Bahasa</th>
+                            <th>Kewarganegaraan</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                        <tbody className="body">
+                    </tbody>
+                </Table>
+            </Row>
+        </Row>
     </React.Fragment>
 )
