@@ -1,7 +1,7 @@
 .containers{
-    position: fixed;
-    width: 1256px;
-    height: 60%;
+    position: absolute;
+    width: 78%;
+    height: 65%;
     left: 350px;
     top: 236px;
     
@@ -12,6 +12,7 @@
     
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    z-index: -1;
 }
 
 h1{
