@@ -1,5 +1,5 @@
 .sidebar {
-    position: absolute;
+    position: fixed;
     width: 280px;
     height: 100%;
     left: 0px;
