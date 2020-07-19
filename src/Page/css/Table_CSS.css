@@ -1,9 +1,11 @@
 .containers{
     position: absolute;
     width: 78%;
-    height: 65%;
-    left: 350px;
-    top: 236px;
+    height: 66%;
+    margin-top: 14%;
+    margin-left: 20%;
+    margin-right: 12%;
+    margin-bottom: 3%;
     
     /* White */
     
