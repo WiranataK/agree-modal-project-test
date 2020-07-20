@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
-import Member_Partner from './Page/Member_Partner';
+import Keanggotaan from './Page/Keanggotaan';
 import AxiosDummy from './Page/AxiosDummy';
 import {
   BrowserRouter as Router,
@@ -14,7 +14,7 @@ import {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Member_Partner/>
+    <Keanggotaan/>
     {/* <Router>
       <Switch>
         <Route exact path="/">
