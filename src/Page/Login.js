@@ -15,6 +15,10 @@ class Login extends React.Component{
             type: 'password',
         }
         this.showHide = this.showHide.bind(this);
+
+        const cookies = new Cookies();
+        cookies.remove('refreshToken');
+        cookies.remove('accessToken');
     }
 
     showHide(e){
