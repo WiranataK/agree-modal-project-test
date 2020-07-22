@@ -50,7 +50,7 @@ class Login extends React.Component{
           // Example on how to get cookies
           console.log(cookies.get('refreshToken'));
           console.log(cookies.get('accessToken'));
-          this.props.history.push('/home');
+          this.props.history.push('/Member');
         })
         .catch(error => {
             console.log(error.response);

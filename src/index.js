@@ -4,7 +4,8 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Login from './Page/Login';
 import Keanggotaan from './Page/Keanggotaan';
-import AxiosDummy from './Page/AxiosDummy';
+import Member from './Page/Member';
+import Relasi from './Page/Relasi';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,20 +15,22 @@ import {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Keanggotaan/>
-    {/* <Router>
+     <Router>
       <Switch>
         <Route exact path="/">
           <Login/>
         </Route>
-        <Route path="/Home">
-          <Main/>
+        <Route path="/Keanggotaan">
+          <Keanggotaan/>
         </Route>
-        <Route path="/Dummy">
-          <AxiosDummy/>
+        <Route path="/Member">
+          <Member/>
+        </Route>
+        <Route path="/Relasi">
+          <Relasi/>
         </Route>
       </Switch>
-    </Router> */}
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
