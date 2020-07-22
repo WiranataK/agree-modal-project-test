@@ -55,8 +55,8 @@ export const Table_Member = () => (
                     <thead className="head">
                         <tr>
                             <th>No</th>
-                            <th>Jenis Partner</th>
-                            <th>Nomor Partner</th>
+                            <th>Jenis Member</th>
+                            <th>Nomor Member</th>
                             <th>Nama</th>
                             <th>Nama Panggilan</th>
                             <th>Tempat Lahir</th>
