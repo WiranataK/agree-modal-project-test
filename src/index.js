@@ -6,6 +6,7 @@ import Login from './Page/Login';
 import Keanggotaan from './Page/Keanggotaan';
 import Member from './Page/Member';
 import Relasi from './Page/Relasi';
+import MemberPartner from './Page/Member_Partner'
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +29,9 @@ ReactDOM.render(
         </Route>
         <Route path="/Relasi">
           <Relasi/>
+        </Route>
+        <Route path="/MemberPartner">
+          <MemberPartner/>
         </Route>
       </Switch>
     </Router>
