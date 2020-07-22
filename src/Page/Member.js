@@ -6,6 +6,7 @@ import { Table_Member } from './Components/Table_Member';
 function Member() {
   return (
     <React.Fragment>
+      <Check_Token />
       <Sidebar />
       <Table_Member/>
       {/* <Router>

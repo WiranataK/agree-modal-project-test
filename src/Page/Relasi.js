@@ -6,6 +6,7 @@ import { Table_Relasi } from './Components/Table_Relasi';
 function Relasi() {
   return (
     <React.Fragment>
+      <Check_Token />
       <Sidebar />
       <Table_Relasi/>
       {/* <Router>
