@@ -7,10 +7,12 @@ import { Partner_Address } from './Components/Partner_Address';
 import { Partner_Communication } from './Components/Partner_Communication';
 import { Member_Screen } from './Components/Member_Screen';
 import { Table_Partner } from './Components/Table_Partner';
+import Check_Token from './Components/Check_Token';
 
 function Keanggotaan() {
   return (
     <React.Fragment>
+      <Check_Token />
       <Sidebar />
       <Table_Partner/>
       {/* <Router>
