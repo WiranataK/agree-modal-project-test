@@ -17,7 +17,7 @@ export default function Check_Token() {
 					throw new TokenInvalidError;
 			}
 
-			axios.post(backendUrl+`/token/verify/`, {token: "accessToken"
+			axios.post(backendUrl+`/token/verify/`, {token: accessToken
 					}).then(res => {
 					}).catch(error => {
 
