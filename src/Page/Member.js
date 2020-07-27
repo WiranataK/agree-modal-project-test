@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Sidebar } from './Components/Sidebar';
-import { Table_Partner } from './Components/Table_Partner';
+import { Table_Member } from './Components/Table_Member';
 import Check_Token from './Components/Check_Token';
 
-function Keanggotaan() {
+function Member() {
   return (
     <React.Fragment>
       <Check_Token />
       <Sidebar />
-      <Table_Partner/>
+      <Table_Member/>
       {/* <Router>
         <Switch>
           <Route exact path="/Identification_Screen" component={Identification_Screen} />
@@ -22,4 +22,4 @@ function Keanggotaan() {
   );
 }
 
-export default Keanggotaan;
+export default Member;
