@@ -5,13 +5,13 @@ import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 export const Form_Tambah = () => (
     <Modal.Dialog size="lg">
         <Modal.Header closeButton>
-            <Modal.Title>Tambah Data Keanggotaan</Modal.Title>
+            <Modal.Title id="header">Tambah Data Keanggotaan</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body id="body">
             <Row>
                 <Col>
                     <Form.Label>Perusahaan</Form.Label>
-                    <Form.Control as="select" placeholder="Pilih Perusahaan">
+                    <Form.Control id="pilper" as="select" placeholder="Pilih Perusahaan">
                         <option>Pilih Perusahaan</option>
                         <option>...</option>
                     </Form.Control>
@@ -34,7 +34,7 @@ export const Form_Tambah = () => (
             </Row>
             <Row>
                 <Col>
-                    <Form.Control placeholder="Tempat Lahir"/>
+                    <Form.Control id="fixing" placeholder="Tempat Lahir"/>
                 </Col>
                 <Col>
                     <Form.Label>Tanggal Lahir</Form.Label>
@@ -45,9 +45,7 @@ export const Form_Tambah = () => (
                     <Row>
                         <Col>
                             <Form.Check type="radio" label="Laki-Laki"/>
-                        </Col>
-                        <Col>
-                            <Form.Check type="radio" label="Perempuan"/>                    
+                            <Form.Check type="radio" label="Perempuan"/>
                         </Col>
                     </Row>
                 </Col>
@@ -64,14 +62,23 @@ export const Form_Tambah = () => (
                 </Col>
             </Row>
             <Row>
-                <Col>Tipe Partner</Col>
+                <Col id="col1">Tipe Partner</Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Tipe Partner 1</Form.Label>
+                    <Form.Label id="fl">Tipe Partner 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -85,10 +92,19 @@ export const Form_Tambah = () => (
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Tipe Partner 1</Form.Label>
+                    <Form.Label id="fl">Tipe Partner 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -106,14 +122,23 @@ export const Form_Tambah = () => (
                 </Col>
             </Row>
             <Row>
-                <Col>Data Alamat</Col>
+                <Col id="col1">Data Alamat</Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Alamat 1</Form.Label>
+                    <Form.Label id="fl">Alamat 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -125,10 +150,10 @@ export const Form_Tambah = () => (
                     </Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="No. Alamat"></Form.Control>
+                    <Form.Control id="fixing" placeholder="No. Alamat"></Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Nama Jalan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Nama Jalan"></Form.Control>
                 </Col>
             </Row>
             <Row>
@@ -147,10 +172,19 @@ export const Form_Tambah = () => (
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Alamat 2</Form.Label>
+                    <Form.Label id="fl">Alamat 2</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -162,10 +196,10 @@ export const Form_Tambah = () => (
                     </Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="No. Alamat"></Form.Control>
+                    <Form.Control id="fixing" placeholder="No. Alamat"></Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Nama Jalan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Nama Jalan"></Form.Control>
                 </Col>
             </Row>
             <Row>
@@ -188,14 +222,23 @@ export const Form_Tambah = () => (
                 </Col>
             </Row>
             <Row>
-                <Col>Data Komunikasi</Col>
+                <Col id="col1">Data Komunikasi</Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Komunikasi 1</Form.Label>
+                    <Form.Label id="fl">Komunikasi 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -207,10 +250,10 @@ export const Form_Tambah = () => (
                     </Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="No. Komunikasi"></Form.Control>
+                    <Form.Control id="fixing" placeholder="No. Komunikasi"></Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Identitas Komunikasi"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Identitas Komunikasi"></Form.Control>
                 </Col>
             </Row>
             <Row>
@@ -219,14 +262,23 @@ export const Form_Tambah = () => (
                 </Col>
             </Row>
             <Row>
-                <Col>Data Identitas</Col>
+                <Col id="col1">Data Identitas</Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Identitas 1</Form.Label>
+                    <Form.Label id="fl">Identitas 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -238,7 +290,7 @@ export const Form_Tambah = () => (
                     </Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="No. Identitas"></Form.Control>
+                    <Form.Control id="fixing" placeholder="No. Identitas"></Form.Control>
                 </Col>
                 <Col>
                     <Form.Label>Tanggal Dikeluarkan</Form.Label>
@@ -251,18 +303,27 @@ export const Form_Tambah = () => (
                     <Form.Control type="date"/>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Tempat Identitas Dikeluarkan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan"></Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Negara Tempat Identitas Dikeluarkan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan"></Form.Control>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Label>Identitas 1</Form.Label>
+                    <Form.Label id="fl">Identitas 1</Form.Label>
                 </Col>
                 <Col>
-                    <Button variant="link">Hapus</Button>
+                    <Button variant="link">
+                        <Row>
+                            <Col>
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.08333 2.49996V0.749959C3.08333 0.59525 3.14479 0.446877 3.25419 0.33748C3.36359 0.228084 3.51196 0.166626 3.66667 0.166626H8.33333C8.48804 0.166626 8.63642 0.228084 8.74581 0.33748C8.85521 0.446877 8.91667 0.59525 8.91667 0.749959V2.49996H11.8333V3.66663H10.6667V11.25C10.6667 11.4047 10.6052 11.553 10.4958 11.6624C10.3864 11.7718 10.238 11.8333 10.0833 11.8333H1.91667C1.76196 11.8333 1.61359 11.7718 1.50419 11.6624C1.39479 11.553 1.33333 11.4047 1.33333 11.25V3.66663H0.166668V2.49996H3.08333ZM4.25 1.33329V2.49996H7.75V1.33329H4.25Z" fill="#F64740"/>
+                                </svg>
+                            </Col>
+                            <Col>Hapus</Col>
+                        </Row>
+                    </Button>
                 </Col>
             </Row>
             <Row>
@@ -274,7 +335,7 @@ export const Form_Tambah = () => (
                     </Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="No. Identitas"></Form.Control>
+                    <Form.Control id="fixing" placeholder="No. Identitas"></Form.Control>
                 </Col>
                 <Col>
                     <Form.Label>Tanggal Dikeluarkan</Form.Label>
@@ -287,10 +348,10 @@ export const Form_Tambah = () => (
                     <Form.Control type="date"/>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Tempat Identitas Dikeluarkan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan"></Form.Control>
                 </Col>
                 <Col>
-                    <Form.Control placeholder="Negara Tempat Identitas Dikeluarkan"></Form.Control>
+                    <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan"></Form.Control>
                 </Col>
             </Row>
             <Row>
@@ -299,11 +360,11 @@ export const Form_Tambah = () => (
                 </Col>
             </Row>
             <Row>
-                <Col>Data Bank</Col>
+                <Col id="col1">Data Bank</Col>
             </Row>
             <Row>
                 <Col>
-                    <Form.Control placeholder="Nama Akun"></Form.Control>
+                    <Form.Control id="fixing2" placeholder="Nama Akun"></Form.Control>
                 </Col>
                 <Col>
                     <Form.Label>Jenis Pembayaran</Form.Label>
@@ -323,11 +384,11 @@ export const Form_Tambah = () => (
             </Row>
             <Row>
                 <Col>
-                    <Button>
-                        <Col>
+                    <Button id="btnprimary">
+                        <Col xs={"auto"}>
                         
                         </Col>
-                        <Col>Tambah Data</Col>
+                        <Col xs={10}>Tambah Data</Col>
                     </Button>
                 </Col>
             </Row>
