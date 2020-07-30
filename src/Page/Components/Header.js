@@ -34,19 +34,15 @@ class Nav extends React.Component {
   }
 }
 
-class Header extends React.Component {
+export class Header extends React.Component {
   render() {
     return (
-      <div class="header">
-        <Title />
-        <Nav />
-      </div>
+      <React.Fragment>
+        <div class="header">
+          <Title />
+          <Nav />
+        </div>
+      </React.Fragment>
     );
   }
 }
-
-export const Header = () => (
-  <React.Fragment>
-    <Header />
-  </React.Fragment>
-);
