@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Form_Tambah.css';
+import '../css/Form.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
 export const Form_Edit = () => (
