@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import '../css/Form_Tambah.css';
+import '../css/Form.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
 export class Form_Tambah extends React.Component{
