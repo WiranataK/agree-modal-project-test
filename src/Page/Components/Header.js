@@ -23,13 +23,13 @@ class Nav extends React.Component {
   render() {
     return (
       <nav class="menu">
-        <a href="#" class="active" title="Home">
+        <a href="/Keanggotaan" class="active" title="Home">
           Data Partner
         </a>
-        <a href="#" title="About">
+        <a href="/Member" title="About">
           Member
         </a>
-        <a href="#" title="Gallery">
+        <a href="/Relasi" title="Gallery">
           Relasi
         </a>
       </nav>
