@@ -11,9 +11,10 @@ export class Table_Member extends React.Component {
     this.state = {
       arrMember: []
     };
+    this.initData();
   }
 
-  iniData(){
+  initData(){
       let cookies = new Cookies();
       let token = cookies.get('accessToken');
       const AuthStr = 'Bearer '.concat(token);
@@ -38,7 +39,7 @@ export class Table_Member extends React.Component {
                       <h1>Daftar Member</h1>
                   </Row>
                   <Row>
-                      <Table className="table" responsive striped hover variant="light" id="tablePartner" onChange={this.iniData()}>
+                      <Table className="table" responsive striped hover variant="light" id="tablePartner">
                           <thead className="head">
                               <tr>
                                   <th>No</th>
@@ -76,8 +77,6 @@ export class Table_Member extends React.Component {
                       </Table>
                   </Row>
               </Row>
-
-              {this.iniData()}
           </React.Fragment>
       )
     }

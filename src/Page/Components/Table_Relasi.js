@@ -12,6 +12,7 @@ export class Table_Relasi extends React.Component {
     this.state = {
       arrRelasi: []
     };
+    this.initData();
   }
 
   fillTable(){
@@ -29,7 +30,7 @@ export class Table_Relasi extends React.Component {
     });
   }
 
-  iniData(){
+  initData(){
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
@@ -54,7 +55,7 @@ export class Table_Relasi extends React.Component {
                     <h1>Relasi Partner</h1>
                 </Row>
                 <Row>
-                    <Table className="table" responsive striped hover variant="light" id="tableRelasi" onChange={this.iniData()}>
+                    <Table className="table" responsive striped hover variant="light" id="tableRelasi">
                         <thead className="head">
                             <tr>
                                 <th>No</th>
@@ -80,8 +81,6 @@ export class Table_Relasi extends React.Component {
                     </Table>
                 </Row>
             </Row>
-
-            {this.iniData()}
         </React.Fragment>
     )
   }

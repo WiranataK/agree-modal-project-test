@@ -14,10 +14,10 @@ class Table_Partner extends React.Component {
     this.state = {
       arrPartner: []
     };
-    this.iniData()
+    this.initData()
   }
 
-  iniData(){
+  initData(){
       let cookies = new Cookies();
       let token = cookies.get('accessToken');
       const AuthStr = 'Bearer '.concat(token);

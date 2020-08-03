@@ -15,6 +15,7 @@ class Table_Member_Partner extends React.Component {
       }
     };
     this.partnerCode = this.props.match.params.partner_code;
+    this.initData();
   }
 
   fillTable(){
@@ -38,7 +39,7 @@ class Table_Member_Partner extends React.Component {
       });
   }
 
-  iniData(){
+  initData(){
       let cookies = new Cookies();
       let token = cookies.get('accessToken');
       const AuthStr = 'Bearer '.concat(token);
@@ -102,8 +103,6 @@ class Table_Member_Partner extends React.Component {
                     </Table>
                 </Row>
             </Row>
-
-            {this.iniData()}
         </React.Fragment>
     );
   }
