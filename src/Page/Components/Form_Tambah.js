@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 import '../css/Form_Tambah.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
@@ -25,7 +27,6 @@ export class Form_Tambah extends React.Component{
     };
   }
   updateData(listName,index, property,event){
-    var input;
     if(listName){
       if(property){
         var item = this.state[listName][index]
@@ -70,6 +71,17 @@ export class Form_Tambah extends React.Component{
         ...this.state[listName].slice(index+1)
       ]
     });
+  }
+  submit(e){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.post(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails', this.state ,{ headers: { Authorization: AuthStr } })
+    .then((response) => {
+        console.log(response);
+      }, (error) => {
+        console.log(error);
+      });
   }
   render(){
     return (
@@ -371,9 +383,8 @@ export class Form_Tambah extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Button id="btnprimary">
+                        <Button id="btnprimary" onClick={(e) => this.submit(e)}>
                             <Col xs={"auto"}>
-
                             </Col>
                             <Col xs={10}>Tambah Data</Col>
                         </Button>
