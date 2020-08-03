@@ -10,6 +10,8 @@
 
 .header {
   margin-left: 20%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .header_title {

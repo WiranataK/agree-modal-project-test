@@ -85,8 +85,8 @@ export class Form_Tambah extends React.Component{
   }
   render(){
     return (
-        <Modal.Dialog size="lg">
-            <Modal.Header closeButton>
+        <Modal show={this.props.show} size="lg" onHide={(e) => this.props.close()}>
+            <Modal.Header closeButton onClick={(e) => this.props.close()}>
                 <Modal.Title id="header">Tambah Data Keanggotaan</Modal.Title>
             </Modal.Header>
             <Modal.Body id="body">
@@ -391,7 +391,7 @@ export class Form_Tambah extends React.Component{
                     </Col>
                 </Row>
             </Modal.Body>
-        </Modal.Dialog>
+        </Modal>
     )
   }
 }

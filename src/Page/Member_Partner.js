@@ -8,8 +8,8 @@ function Member_Partner() {
   return (
     <React.Fragment>
       <Check_Token />
-      <Sidebar />
       <Table_Member_Partner/>
+      <Sidebar active="Keanggotaan"/>
     </React.Fragment>
   );
 }
