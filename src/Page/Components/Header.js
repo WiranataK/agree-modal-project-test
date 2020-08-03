@@ -1,5 +1,8 @@
 import React from "react";
 import "../css/Header.css";
+import { Form_Tambah } from "./Form_Tambah";
+import { Tambah_Data } from "./Tambah_Data";
+import {Container, Row, Col, Button} from 'react-bootstrap';
 
 class Title extends React.Component {
   render() {
@@ -38,9 +41,20 @@ export class Header extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div class="header">
-          <Title />
-          <Nav />
+        <div class="container header">
+          <Row>
+            <Col>
+              <Title />
+            </Col>
+          </Row>
+          <Row>
+            <div class="col">
+              <Nav />
+            </div>
+            <div class="col-auto">
+              <Tambah_Data/>
+            </div>
+          </Row>
         </div>
       </React.Fragment>
     );
