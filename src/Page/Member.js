@@ -8,7 +8,7 @@ function Member() {
   return (
     <React.Fragment>
       <Check_Token />
-      <Sidebar />
+      <Sidebar active="Keanggotaan"/>
       <Table_Member/>
       {/* <Router>
         <Switch>
