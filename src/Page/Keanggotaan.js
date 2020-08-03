@@ -11,9 +11,9 @@ function Keanggotaan() {
   return (
     <React.Fragment>
       <Check_Token />
-      <Sidebar active="Keanggotaan"/>
       <Table_Partner/>
       <Header />
+      <Sidebar active="Keanggotaan"/>
       {/* <Router>
         <Switch>
           <Route exact path="/Identification_Screen" component={Identification_Screen} />

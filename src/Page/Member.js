@@ -8,16 +8,8 @@ function Member() {
   return (
     <React.Fragment>
       <Check_Token />
-      <Sidebar active="Keanggotaan"/>
       <Table_Member/>
-      {/* <Router>
-        <Switch>
-          <Route exact path="/Identification_Screen" component={Identification_Screen} />
-          <Route path="/Partner_Address" component={Partner_Address} />
-          <Route path="/Partner_Communication" component={Partner_Communication} />
-          <Route path="/Member_Screen" component={Member_Screen} />
-        </Switch>
-      </Router> */}
+      <Sidebar active="Keanggotaan"/>
     </React.Fragment>
   );
 }
