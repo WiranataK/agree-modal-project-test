@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import sanitize from '../helper/sanitizer.js'
 import { withRouter } from 'react-router-dom';
+import { Form_Tambah } from "./Form_Tambah";
 
 
 class Table_Partner extends React.Component {
@@ -13,6 +14,7 @@ class Table_Partner extends React.Component {
     this.state = {
       arrPartner: []
     };
+    this.iniData()
   }
 
   iniData(){
@@ -50,7 +52,7 @@ class Table_Partner extends React.Component {
                       <h1>Daftar Partner</h1>
                   </Row>
                   <Row>
-                      <Table className="table" responsive striped hover variant="light" id="tablePartner" onChange={this.iniData()}>
+                      <Table className="table" responsive striped hover variant="light" id="tablePartner">
                           <thead className="head">
                               <tr>
                                   <th>No</th>
@@ -89,8 +91,6 @@ class Table_Partner extends React.Component {
                       </Table>
                   </Row>
               </Row>
-
-              {this.iniData()}
           </React.Fragment>
       )
     }
@@ -108,9 +108,36 @@ class Member_Button extends React.Component {
 }
 
 class Edit_Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form_opened: false
+    };
+    this.openForm = this.openForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+  }
+  openForm(){
+    this.setState({
+      form_opened: true
+    });
+  }
+  closeForm(){
+    this.setState({
+      form_opened: false
+    });
+  }
   render(){
+    let form_tambah;
+    if (this.state.form_opened) {
+      form_tambah = <Form_Tambah show={this.state.form_opened} close={this.closeForm} />;
+    } else {
+      form_tambah = null;
+    }
     return (
-      <button type="button" class="buttons2 btn btn-primary"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.85642 2.54902L7.42932 1.11677C7.24307 0.941184 6.999 0.840437 6.74355 0.83369C6.4881 0.826944 6.23909 0.914669 6.04389 1.08018L1.35634 5.78466C1.18799 5.95504 1.08316 6.17837 1.05946 6.41715L0.835502 8.59689C0.828486 8.67345 0.838385 8.75062 0.864493 8.82291C0.890601 8.89519 0.932275 8.9608 0.986545 9.01506C1.03521 9.06351 1.09293 9.10184 1.15639 9.12785C1.21985 9.15387 1.2878 9.16705 1.35634 9.16665H1.40322L3.57512 8.96802C3.81303 8.94423 4.03556 8.83903 4.20533 8.67007L8.89288 3.96559C9.07482 3.77269 9.17315 3.51527 9.16631 3.24974C9.15948 2.98422 9.04804 2.73224 8.85642 2.54902ZM7.08557 4.2949L5.68972 2.89402L6.70536 1.84858L8.12725 3.2756L7.08557 4.2949Z" fill="white"></path></svg></button>
+      <div>
+          <button type="button" class="buttons2 btn btn-primary" onClick={(e) => this.openForm()}><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.85642 2.54902L7.42932 1.11677C7.24307 0.941184 6.999 0.840437 6.74355 0.83369C6.4881 0.826944 6.23909 0.914669 6.04389 1.08018L1.35634 5.78466C1.18799 5.95504 1.08316 6.17837 1.05946 6.41715L0.835502 8.59689C0.828486 8.67345 0.838385 8.75062 0.864493 8.82291C0.890601 8.89519 0.932275 8.9608 0.986545 9.01506C1.03521 9.06351 1.09293 9.10184 1.15639 9.12785C1.21985 9.15387 1.2878 9.16705 1.35634 9.16665H1.40322L3.57512 8.96802C3.81303 8.94423 4.03556 8.83903 4.20533 8.67007L8.89288 3.96559C9.07482 3.77269 9.17315 3.51527 9.16631 3.24974C9.15948 2.98422 9.04804 2.73224 8.85642 2.54902ZM7.08557 4.2949L5.68972 2.89402L6.70536 1.84858L8.12725 3.2756L7.08557 4.2949Z" fill="white"></path></svg></button>
+          {form_tambah}
+      </div>
     )
   }
 }

@@ -38,7 +38,31 @@ class Nav extends React.Component {
 }
 
 export class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form_opened: false
+    };
+    this.openForm = this.openForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
+  }
+  openForm(){
+    this.setState({
+      form_opened: true
+    });
+  }
+  closeForm(){
+    this.setState({
+      form_opened: false
+    });
+  }
   render() {
+    let form_tambah;
+    if (this.state.form_opened) {
+      form_tambah = <Form_Tambah show={this.state.form_opened} close={this.closeForm} />;
+    } else {
+      form_tambah = null;
+    }
     return (
       <React.Fragment>
         <div class="container header">
@@ -52,10 +76,11 @@ export class Header extends React.Component {
               <Nav />
             </div>
             <div class="col-auto">
-              <Tambah_Data/>
+              <Tambah_Data onClick={(e) => this.openForm()}/>
             </div>
           </Row>
         </div>
+        {form_tambah}
       </React.Fragment>
     );
   }
