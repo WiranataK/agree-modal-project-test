@@ -26,35 +26,30 @@ export class Form_Tambah extends React.Component{
       payment_method: ""
     };
   }
-  updateData(listName,index, property,event){
-    if(listName){
-      if(property){
-        var item = this.state[listName][index]
-        item[property] = event.target.value
-        this.setState({
-          [listName]:[
-            ...this.state[listName].slice(0,index),
-            item,
-            ...this.state[listName].slice(index+1)
-          ]
-        });
-      }
-      else{
-        this.setState({
-          [listName]:[
-            ...this.state[listName].slice(0,index),
-            event.target.value,
-            ...this.state[listName].slice(index+1)
-          ]
-        });
-      }
-
-    }
-    else{
-      this.setState({
-        [property]: event.target.value
-      });
-    }
+  updateData(property,event){
+    this.setState({
+      [property]: event.target.value
+    });
+  }
+  updateListData(listName,index,event){
+    this.setState({
+      [listName]:[
+        ...this.state[listName].slice(0,index),
+        event.target.value,
+        ...this.state[listName].slice(index+1)
+      ]
+    });
+  }
+  updateListObjData(listName,index, property,event){
+    var item = this.state[listName][index]
+    item[property] = event.target.value
+    this.setState({
+      [listName]:[
+        ...this.state[listName].slice(0,index),
+        item,
+        ...this.state[listName].slice(index+1)
+      ]
+    });
   }
   addList(listName,input,event){
     this.setState({
@@ -108,39 +103,39 @@ export class Form_Tambah extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control placeholder="Nama" value={this.state.partner_name} onChange={(e) => this.updateData(null,null, "partner_name",e)}/>
+                        <Form.Control placeholder="Nama" value={this.state.partner_name} onChange={(e) => this.updateData("partner_name",e)}/>
                     </Col>
                     <Col>
-                        <Form.Control placeholder="Nama Panggilan" value={this.state.nickname} onChange={(e) => this.updateData(null,null, "nickname",e)}/>
+                        <Form.Control placeholder="Nama Panggilan" value={this.state.nickname} onChange={(e) => this.updateData("nickname",e)}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control id="fixing" placeholder="Tempat Lahir" value={this.state.birthplace} onChange={(e) => this.updateData(null,null, "birthplace",e)}/>
+                        <Form.Control id="fixing" placeholder="Tempat Lahir" value={this.state.birthplace} onChange={(e) => this.updateData("birthplace",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Tanggal Lahir</Form.Label>
-                        <Form.Control type="date" value={this.state.date_of_birth} onChange={(e) => this.updateData(null,null, "date_of_birth",e)}/>
+                        <Form.Control type="date" value={this.state.date_of_birth} onChange={(e) => this.updateData("date_of_birth",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Jenis Kelamin</Form.Label>
                         <Row>
                             <Col>
-                                <Form.Check type="radio" label="Laki-Laki" value="m" name="gender" checked={this.state.gender == "m"} onChange={(e) => this.updateData(null,null, "gender",e)}/>
-                                <Form.Check type="radio" label="Perempuan" value="f" name="gender" checked={this.state.gender == "f"} onChange={(e) => this.updateData(null,null, "gender",e)}/>
+                                <Form.Check type="radio" label="Laki-Laki" value="m" name="gender" checked={this.state.gender == "m"} onChange={(e) => this.updateData("gender",e)}/>
+                                <Form.Check type="radio" label="Perempuan" value="f" name="gender" checked={this.state.gender == "f"} onChange={(e) => this.updateData("gender",e)}/>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control placeholder="Agama" value={this.state.religion} onChange={(e) => this.updateData(null,null, "religion",e)}/>
+                        <Form.Control placeholder="Agama" value={this.state.religion} onChange={(e) => this.updateData("religion",e)}/>
                     </Col>
                     <Col>
-                        <Form.Control placeholder="Bahasa" value={this.state.language} onChange={(e) => this.updateData(null,null, "language",e)}/>
+                        <Form.Control placeholder="Bahasa" value={this.state.language} onChange={(e) => this.updateData("language",e)}/>
                     </Col>
                     <Col>
-                        <Form.Control placeholder="Kebangsaan" value={this.state.nationality} onChange={(e) => this.updateData(null,null, "nationality",e)}/>
+                        <Form.Control placeholder="Kebangsaan" value={this.state.nationality} onChange={(e) => this.updateData("nationality",e)}/>
                     </Col>
                 </Row>
                 <Row>
@@ -169,7 +164,7 @@ export class Form_Tambah extends React.Component{
                         <Row>
                             <Col>
                                 <Form.Label>Jenis Partner</Form.Label>
-                                <Form.Control as="select" value={item} onChange={(e) => this.updateData("partner_type",index, null,e)}>
+                                <Form.Control as="select" value={item} onChange={(e) => this.updateListData("partner_type",index,e)}>
                                     <option value="0" disabled hidden>Pilih Jenis Partner</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -211,7 +206,7 @@ export class Form_Tambah extends React.Component{
                         <Row>
                             <Col>
                                 <Form.Label>Jenis Alamat</Form.Label>
-                                <Form.Control as="select" value={item.address_type} onChange={(e) => this.updateData("addresses",index, "address_type",e)}>
+                                <Form.Control as="select" value={item.address_type} onChange={(e) => this.updateListObjData("addresses",index, "address_type",e)}>
                                     <option value="" disabled hidden>Pilih Jenis Alamat</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -219,24 +214,24 @@ export class Form_Tambah extends React.Component{
                                 </Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control id="fixing" placeholder="No. Alamat" value={item.address_number} onChange={(e) => this.updateData("addresses",index, "address_number",e)}></Form.Control>
+                                <Form.Control id="fixing" placeholder="No. Alamat" value={item.address_number} onChange={(e) => this.updateListObjData("addresses",index, "address_number",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control id="fixing" placeholder="Nama Jalan" value={item.street} onChange={(e) => this.updateData("addresses",index, "street",e)}></Form.Control>
+                                <Form.Control id="fixing" placeholder="Nama Jalan" value={item.street} onChange={(e) => this.updateListObjData("addresses",index, "street",e)}></Form.Control>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Control placeholder="Kota" value={item.city} onChange={(e) => this.updateData("addresses",index, "city",e)}></Form.Control>
+                                <Form.Control placeholder="Kota" value={item.city} onChange={(e) => this.updateListObjData("addresses",index, "city",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Provinsi" value={item.state} onChange={(e) => this.updateData("addresses",index, "state",e)}></Form.Control>
+                                <Form.Control placeholder="Provinsi" value={item.state} onChange={(e) => this.updateListObjData("addresses",index, "state",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Negara" value={item.country} onChange={(e) => this.updateData("addresses",index, "country",e)}></Form.Control>
+                                <Form.Control placeholder="Negara" value={item.country} onChange={(e) => this.updateListObjData("addresses",index, "country",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Kode Pos" value={item.zip_code} onChange={(e) => this.updateData("addresses",index, "zip_code",e)}></Form.Control>
+                                <Form.Control placeholder="Kode Pos" value={item.zip_code} onChange={(e) => this.updateListObjData("addresses",index, "zip_code",e)}></Form.Control>
                             </Col>
                         </Row>
                     </Col>
@@ -273,7 +268,7 @@ export class Form_Tambah extends React.Component{
                           <Row>
                               <Col>
                                   <Form.Label>Jenis Komunikasi</Form.Label>
-                                  <Form.Control as="select" value={item.communication_type} onChange={(e) => this.updateData("communications",index, "communication_type",e)}>
+                                  <Form.Control as="select" value={item.communication_type} onChange={(e) => this.updateListObjData("communications",index, "communication_type",e)}>
                                       <option value="" disabled hidden>Pilih Jenis Komunikasi</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -281,10 +276,10 @@ export class Form_Tambah extends React.Component{
                                   </Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="No. Komunikasi" value={item.communication_order} onChange={(e) => this.updateData("communications",index, "communication_order",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="No. Komunikasi" value={item.communication_order} onChange={(e) => this.updateListObjData("communications",index, "communication_order",e)}></Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Identitas Komunikasi" value={item.communication_number} onChange={(e) => this.updateData("communications",index, "communication_number",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Identitas Komunikasi" value={item.communication_number} onChange={(e) => this.updateListObjData("communications",index, "communication_number",e)}></Form.Control>
                               </Col>
                           </Row>
                       </Col>
@@ -321,7 +316,7 @@ export class Form_Tambah extends React.Component{
                           <Row>
                               <Col>
                                   <Form.Label>Jenis Identitas</Form.Label>
-                                  <Form.Control as="select" value={item.identification_type} onChange={(e) => this.updateData("identifications",index, "identification_type",e)}>
+                                  <Form.Control as="select" value={item.identification_type} onChange={(e) => this.updateListObjData("identifications",index, "identification_type",e)}>
                                       <option value="" disabled hidden>Pilih Jenis Identitas</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -329,23 +324,23 @@ export class Form_Tambah extends React.Component{
                                   </Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="No. Identitas"value={item.identification_number} onChange={(e) => this.updateData("identifications",index, "identification_number",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="No. Identitas"value={item.identification_number} onChange={(e) => this.updateListObjData("identifications",index, "identification_number",e)}></Form.Control>
                               </Col>
                               <Col>
                                   <Form.Label>Tanggal Dikeluarkan</Form.Label>
-                                  <Form.Control type="date" value={item.date_of_issue} onChange={(e) => this.updateData("identifications",index, "date_of_issue",e)}/>
+                                  <Form.Control type="date" value={item.date_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "date_of_issue",e)}/>
                               </Col>
                           </Row>
                           <Row>
                               <Col>
                                   <Form.Label>Tanggal Kadaluarsa</Form.Label>
-                                  <Form.Control type="date" value={item.date_of_expire} onChange={(e) => this.updateData("identifications",index, "date_of_expire",e)}/>
+                                  <Form.Control type="date" value={item.date_of_expire} onChange={(e) => this.updateListObjData("identifications",index, "date_of_expire",e)}/>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan"value={item.place_of_issue} onChange={(e) => this.updateData("identifications",index, "place_of_issue",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan"value={item.place_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "place_of_issue",e)}></Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan"value={item.country_of_issue} onChange={(e) => this.updateData("identifications",index, "country_of_issue",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan"value={item.country_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "country_of_issue",e)}></Form.Control>
                               </Col>
                           </Row>
                       </Col>
@@ -361,11 +356,11 @@ export class Form_Tambah extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control id="fixing2" placeholder="Nama Akun" value={this.state.account_name} onChange={(e) => this.updateData(null,null, "account_name",e)}></Form.Control>
+                        <Form.Control id="fixing2" placeholder="Nama Akun" value={this.state.account_name} onChange={(e) => this.updateData("account_name",e)}></Form.Control>
                     </Col>
                     <Col>
                         <Form.Label>Jenis Pembayaran</Form.Label>
-                        <Form.Control as="select" value={this.state.payment_method} onChange={(e) => this.updateData(null,null, "payment_method",e)}>
+                        <Form.Control as="select" value={this.state.payment_method} onChange={(e) => this.updateData("payment_method",e)}>
                             <option value="" disabled hidden>Pilih Jenis Pembayaran</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -375,10 +370,10 @@ export class Form_Tambah extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Control placeholder="Kode Bank" value={this.state.bank_code} onChange={(e) => this.updateData(null,null, "bank_code",e)}></Form.Control>
+                        <Form.Control placeholder="Kode Bank" value={this.state.bank_code} onChange={(e) => this.updateData("bank_code",e)}></Form.Control>
                     </Col>
                     <Col>
-                        <Form.Control placeholder="No. Akun" value={this.state.account_number} onChange={(e) => this.updateData(null,null, "account_number",e)}></Form.Control>
+                        <Form.Control placeholder="No. Akun" value={this.state.account_number} onChange={(e) => this.updateData("account_number",e)}></Form.Control>
                     </Col>
                 </Row>
                 <Row>
