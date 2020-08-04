@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import sanitize from '../helper/sanitizer.js'
 import { withRouter } from 'react-router-dom';
-import { Form_Tambah } from "./Form_Tambah";
+import { Form_Edit } from "./Form_Edit";
 
 
 class Table_Partner extends React.Component {
@@ -129,7 +129,7 @@ class Edit_Button extends React.Component {
   render(){
     let form_tambah;
     if (this.state.form_opened) {
-      form_tambah = <Form_Tambah show={this.state.form_opened} close={this.closeForm} />;
+      form_tambah = <Form_Edit show={this.state.form_opened} close={this.closeForm} partnerCode={this.props.partnerCode}/>;
     } else {
       form_tambah = null;
     }
