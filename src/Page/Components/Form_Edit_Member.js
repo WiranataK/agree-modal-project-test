@@ -1,13 +1,15 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 import '../css/Form.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
 export class Form_Edit_Member extends React.Component{
   constructor(props) {
     super(props);
-    this.partnerCode = this.props.partnerCode;
-    this.memberNumber = this.props.memberNumber;
     this.state = {
+      partner_code: this.props.partnerCode,
+      member_number: this.props.memberNumber,
       member_name: "",
       member_nickname: "",
       birthplace: "",
@@ -17,10 +19,38 @@ export class Form_Edit_Member extends React.Component{
       religion: "",
       language: "",
       nationality: "",
-      addresses: [],
-      communications: [],
-      identifications: []
+      address: [],
+      communication: [],
+      identification: []
     };
+
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partnermemberdetails?partner_code='+this.state.partner_code+'&member_number='+this.state.member_number, { headers: { Authorization: AuthStr } })
+    .then(response => {
+      // If request is good...
+      var data = response.data;
+      this.setState({
+        member_name: data["member_name"],
+        member_nickname: data["member_nickname"],
+        birthplace: data["birthplace"],
+        date_of_birth: data["date_of_birth"],
+        gender: data["gender"],
+        member_type: data["member_type"],
+        religion: data["religion"],
+        language: data["language"],
+        nationality: data["nationality"],
+        address: data["addresses"],
+        communication: data["communications"],
+        identification: data["identities"]
+      });
+      this.render();
+    })
+    .catch((error) => {
+      alert("error :can't get partner data");
+      this.props.close()
+    });
   }
   updateData(property,event){
     this.setState({
@@ -54,6 +84,34 @@ export class Form_Edit_Member extends React.Component{
       ]
     });
   }
+  submit(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/partnermemberdetails', this.state ,{ headers: { Authorization: AuthStr } })
+    .then((response) => {
+        console.log(response);
+        alert("success");
+        this.props.close();
+      }, (error) => {
+        console.log(error);
+        alert(error)
+      });
+  }
+  delete(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/partnermemberdetails?partner_code='+this.state.partner_code+'&member_number='+this.state.member_number, { headers: { Authorization: AuthStr } })
+    .then((response) => {
+        console.log(response);
+        alert("success");
+        this.props.close();
+      }, (error) => {
+        console.log(error);
+        alert(error)
+      });
+  }
   render() {
     return (
         <Modal size="lg" show={this.props.show} onHide={(e) => this.props.close()}>
@@ -80,10 +138,7 @@ export class Form_Edit_Member extends React.Component{
                 <Row>
                     <Col>
                         <Form.Label>Jenis Keanggotaan</Form.Label>
-                        <Form.Control as="select" placeholder="Pilih Jenis Keanggotaan">
-                            <option>Pilih Jenis Keanggotaan</option>
-                            <option>...</option>
-                        </Form.Control>
+                        <Form.Control placeholder="Jenis Keanggotaan" value={this.state.member_type} onChange={(e) => this.updateData("member_type",e)}/>
                     </Col>
                 </Row>
                 <Row>
@@ -126,7 +181,7 @@ export class Form_Edit_Member extends React.Component{
                 <Row>
                     <Col id="col1">Data Alamat</Col>
                 </Row>
-                {this.state.addresses.map((item, index) => (
+                {this.state.address.map((item, index) => (
                 <Row>
                     <Col>
                         <Row>
@@ -134,7 +189,7 @@ export class Form_Edit_Member extends React.Component{
                                 <Form.Label id="fl">Alamat {index+1}</Form.Label>
                             </Col>
                             <Col>
-                                <Button variant="link" onClick={(e) => this.deleteList("addresses",index,e)}>
+                                <Button variant="link" onClick={(e) => this.deleteList("address",index,e)}>
                                     <Row>
                                         <Col>
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +204,7 @@ export class Form_Edit_Member extends React.Component{
                         <Row>
                             <Col>
                                 <Form.Label>Jenis Alamat</Form.Label>
-                                <Form.Control as="select" value={item.address_type} onChange={(e) => this.updateListObjData("addresses",index, "address_type",e)}>
+                                <Form.Control as="select" value={item.address_type} onChange={(e) => this.updateListObjData("address",index, "address_type",e)}>
                                     <option value="" disabled hidden>Pilih Jenis Alamat</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -157,24 +212,24 @@ export class Form_Edit_Member extends React.Component{
                                 </Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control id="fixing" placeholder="No. Alamat" value={item.address_number} onChange={(e) => this.updateListObjData("addresses",index, "address_number",e)}></Form.Control>
+                                <Form.Control id="fixing" placeholder="No. Alamat" value={item.address_number} onChange={(e) => this.updateListObjData("address",index, "address_number",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control id="fixing" placeholder="Nama Jalan" value={item.street} onChange={(e) => this.updateListObjData("addresses",index, "street",e)}></Form.Control>
+                                <Form.Control id="fixing" placeholder="Nama Jalan" value={item.street} onChange={(e) => this.updateListObjData("address",index, "street",e)}></Form.Control>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Control placeholder="Kota" value={item.city} onChange={(e) => this.updateListObjData("addresses",index, "city",e)}></Form.Control>
+                                <Form.Control placeholder="Kota" value={item.city} onChange={(e) => this.updateListObjData("address",index, "city",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Provinsi" value={item.state} onChange={(e) => this.updateListObjData("addresses",index, "state",e)}></Form.Control>
+                                <Form.Control placeholder="Provinsi" value={item.state} onChange={(e) => this.updateListObjData("address",index, "state",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Negara" value={item.country} onChange={(e) => this.updateListObjData("addresses",index, "country",e)}></Form.Control>
+                                <Form.Control placeholder="Negara" value={item.country} onChange={(e) => this.updateListObjData("address",index, "country",e)}></Form.Control>
                             </Col>
                             <Col>
-                                <Form.Control placeholder="Kode Pos" value={item.zip_code} onChange={(e) => this.updateListObjData("addresses",index, "zip_code",e)}></Form.Control>
+                                <Form.Control placeholder="Kode Pos" value={item.zip_code} onChange={(e) => this.updateListObjData("address",index, "zip_code",e)}></Form.Control>
                             </Col>
                         </Row>
                     </Col>
@@ -182,13 +237,13 @@ export class Form_Edit_Member extends React.Component{
                 ))}
                 <Row>
                     <Col>
-                        <Button onClick={(e) => this.addList("addresses",{address_type:"",address_number:"",street:"",city:"",state:"",country:"",zip_code:""},e)}>Tambah Data</Button>
+                        <Button onClick={(e) => this.addList("address",{address_type:"",address_number:"",street:"",city:"",state:"",country:"",zip_code:""},e)}>Tambah Data</Button>
                     </Col>
                 </Row>
                 <Row>
                     <Col id="col1">Data Komunikasi</Col>
                 </Row>
-                {this.state.communications.map((item, index) => (
+                {this.state.communication.map((item, index) => (
                   <Row>
                       <Col>
                           <Row>
@@ -196,7 +251,7 @@ export class Form_Edit_Member extends React.Component{
                                   <Form.Label id="fl">Komunikasi {index+1}</Form.Label>
                               </Col>
                               <Col>
-                                  <Button variant="link" onClick={(e) => this.deleteList("communications",index,e)}>
+                                  <Button variant="link" onClick={(e) => this.deleteList("communication",index,e)}>
                                       <Row>
                                           <Col>
                                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -211,7 +266,7 @@ export class Form_Edit_Member extends React.Component{
                           <Row>
                               <Col>
                                   <Form.Label>Jenis Komunikasi</Form.Label>
-                                  <Form.Control as="select" value={item.communication_type} onChange={(e) => this.updateListObjData("communications",index, "communication_type",e)}>
+                                  <Form.Control as="select" value={item.communication_type} onChange={(e) => this.updateListObjData("communication",index, "communication_type",e)}>
                                       <option value="" disabled hidden>Pilih Jenis Komunikasi</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -219,10 +274,10 @@ export class Form_Edit_Member extends React.Component{
                                   </Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="No. Komunikasi" value={item.communication_order} onChange={(e) => this.updateListObjData("communications",index, "communication_order",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="No. Komunikasi" value={item.communication_order} onChange={(e) => this.updateListObjData("communication",index, "communication_order",e)}></Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Identitas Komunikasi" value={item.communication_number} onChange={(e) => this.updateListObjData("communications",index, "communication_number",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Identitas Komunikasi" value={item.communication_number} onChange={(e) => this.updateListObjData("communication",index, "communication_number",e)}></Form.Control>
                               </Col>
                           </Row>
                       </Col>
@@ -230,13 +285,13 @@ export class Form_Edit_Member extends React.Component{
                 ))}
                 <Row>
                     <Col>
-                        <Button onClick={(e) => this.addList("communications",{communication_type:"",communication_order:"",communication_number:""},e)}>Tambah Data</Button>
+                        <Button onClick={(e) => this.addList("communication",{communication_type:"",communication_order:"",communication_number:""},e)}>Tambah Data</Button>
                     </Col>
                 </Row>
                 <Row>
                     <Col id="col1">Data Identitas</Col>
                 </Row>
-                {this.state.identifications.map((item, index) => (
+                {this.state.identification.map((item, index) => (
                   <Row>
                       <Col>
                           <Row>
@@ -244,7 +299,7 @@ export class Form_Edit_Member extends React.Component{
                                   <Form.Label id="fl">Identitas {index+1}</Form.Label>
                               </Col>
                               <Col>
-                                  <Button variant="link" onClick={(e) => this.deleteList("identifications",index,e)}>
+                                  <Button variant="link" onClick={(e) => this.deleteList("identification",index,e)}>
                                       <Row>
                                           <Col>
                                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,7 +314,7 @@ export class Form_Edit_Member extends React.Component{
                           <Row>
                               <Col>
                                   <Form.Label>Jenis Identitas</Form.Label>
-                                  <Form.Control as="select" value={item.identification_type} onChange={(e) => this.updateListObjData("identifications",index, "identification_type",e)}>
+                                  <Form.Control as="select" value={item.identification_type} onChange={(e) => this.updateListObjData("identification",index, "identification_type",e)}>
                                       <option value="" disabled hidden>Pilih Jenis Identitas</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -267,23 +322,23 @@ export class Form_Edit_Member extends React.Component{
                                   </Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="No. Identitas" value={item.identification_number} onChange={(e) => this.updateListObjData("identifications",index, "identification_number",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="No. Identitas" value={item.identification_number} onChange={(e) => this.updateListObjData("identification",index, "identification_number",e)}></Form.Control>
                               </Col>
                               <Col>
                                   <Form.Label>Tanggal Dikeluarkan</Form.Label>
-                                  <Form.Control type="date" value={item.date_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "date_of_issue",e)}/>
+                                  <Form.Control type="date" value={item.date_of_issue} onChange={(e) => this.updateListObjData("identification",index, "date_of_issue",e)}/>
                               </Col>
                           </Row>
                           <Row>
                               <Col>
                                   <Form.Label>Tanggal Kadaluarsa</Form.Label>
-                                  <Form.Control type="date" value={item.date_of_expire} onChange={(e) => this.updateListObjData("identifications",index, "date_of_expire",e)}/>
+                                  <Form.Control type="date" value={item.date_of_expire} onChange={(e) => this.updateListObjData("identification",index, "date_of_expire",e)}/>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan" value={item.place_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "place_of_issue",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Tempat Identitas Dikeluarkan" value={item.place_of_issue} onChange={(e) => this.updateListObjData("identification",index, "place_of_issue",e)}></Form.Control>
                               </Col>
                               <Col>
-                                  <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan" value={item.country_of_issue} onChange={(e) => this.updateListObjData("identifications",index, "country_of_issue",e)}></Form.Control>
+                                  <Form.Control id="fixing" placeholder="Negara Tempat Identitas Dikeluarkan" value={item.country_of_issue} onChange={(e) => this.updateListObjData("identification",index, "country_of_issue",e)}></Form.Control>
                               </Col>
                           </Row>
                       </Col>
@@ -291,12 +346,12 @@ export class Form_Edit_Member extends React.Component{
                 ))}
                 <Row>
                     <Col>
-                        <Button onClick={(e) => this.addList("identifications",{identification_type:"",identification_number:"",date_of_issue:"",date_of_expire:"",place_of_issue:"",country_of_issue:""},e)}>Tambah Data</Button>
+                        <Button onClick={(e) => this.addList("identification",{identification_type:"",identification_number:"",date_of_issue:"",date_of_expire:"",place_of_issue:"",country_of_issue:""},e)}>Tambah Data</Button>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Button id="btnprimary2">
+                        <Button id="btnprimary2" onClick={(e) => this.delete()}>
                             <Col xs={"auto"}>
 
                             </Col>
@@ -304,7 +359,7 @@ export class Form_Edit_Member extends React.Component{
                         </Button>
                     </Col>
                     <Col>
-                        <Button id="btnprimary3">
+                        <Button id="btnprimary3" onClick={(e) => this.submit()}>
                             <Col xs={"auto"}>
 
                             </Col>
