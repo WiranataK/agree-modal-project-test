@@ -124,10 +124,6 @@ export class Form_Edit_Member extends React.Component{
                         <Form.Label>Nama Partner</Form.Label>
                         <Form.Control/>
                     </Col>
-                    <Col>
-                        <Form.Label>Jenis Partner</Form.Label>
-                        <Form.Control/>
-                    </Col>
                 </Row>
                 <Row>
                     <Col>

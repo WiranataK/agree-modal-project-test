@@ -97,7 +97,7 @@ export class Form_Edit_Relasi extends React.Component{
                     <Col>
                         <Form.Label>Parent Partner</Form.Label>
                         <Form.Control as="select" value={this.state.new_parent_partner} onChange={(e) => this.updateData("new_parent_partner",e)}>
-                            <option value="" disabled hidden>Pilih Parent Partner</option>
+                            <option value="" hidden>Pilih Parent Partner</option>
                             {this.state.partner_list.map((item, index) => (
                             <option value={item["partner_code"]}>{item["partner_code"]+" ("+item["partner_name"]+")"}</option>
                             ))}
@@ -106,7 +106,7 @@ export class Form_Edit_Relasi extends React.Component{
                     <Col>
                         <Form.Label>Child Partner</Form.Label>
                         <Form.Control as="select" value={this.state.new_child_partner} onChange={(e) => this.updateData("new_child_partner",e)}>
-                            <option value="" disabled hidden>Pilih Child Partner</option>
+                            <option value="" hidden>Pilih Child Partner</option>
                             {this.state.partner_list.map((item, index) => (
                             <option value={item["partner_code"]}>{item["partner_code"]+" ("+item["partner_name"]+")"}</option>
                             ))}
