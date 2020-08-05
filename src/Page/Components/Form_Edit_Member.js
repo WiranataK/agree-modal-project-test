@@ -9,6 +9,7 @@ export class Form_Edit_Member extends React.Component{
     super(props);
     this.state = {
       partner_code: this.props.partnerCode,
+      partner_name: this.props.partnerName,
       member_number: this.props.memberNumber,
       member_name: "",
       member_nickname: "",
@@ -32,6 +33,8 @@ export class Form_Edit_Member extends React.Component{
       // If request is good...
       var data = response.data;
       this.setState({
+        partner_code: this.props.partnerCode,
+        partner_name: this.props.partnerName,
         member_name: data["member_name"],
         member_nickname: data["member_nickname"],
         birthplace: data["birthplace"],
@@ -113,22 +116,23 @@ export class Form_Edit_Member extends React.Component{
       });
   }
   render() {
+    console.log(this.state)
     return (
         <Modal size="lg" show={this.props.show} onHide={(e) => this.props.close()}>
             <Modal.Header closeButton onClick={(e) => this.props.close()}>
-                <Modal.Title id="header">Tambah Data Member Partner</Modal.Title>
+                <Modal.Title id="header">Edit Data Member Partner</Modal.Title>
             </Modal.Header>
             <Modal.Body id="body">
                 <Row>
                     <Col>
                         <Form.Label>Nama Partner</Form.Label>
-                        <Form.Control/>
+                        <Form.Control placeholder="Nama Partner" value={this.state.partner_name} />
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <Form.Label>No. Partner</Form.Label>
-                        <Form.Control/>
+                        <Form.Control placeholder="No. Partner" value={this.state.partner_code} />
                     </Col>
                 </Row>
                 <Row>

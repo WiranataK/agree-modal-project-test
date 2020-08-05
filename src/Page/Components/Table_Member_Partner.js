@@ -97,7 +97,7 @@ class Table_Member_Partner extends React.Component {
                                 <td>{sanitize(item["religion"])}</td>
                                 <td>{sanitize(item["language"])}</td>
                                 <td>{sanitize(item["nationality"])}</td>
-                                <td><Edit_Button partnerCode={sanitize(this.partnerCode)} memberNumber={sanitize(item["member_number"])}/></td>
+                                <td><Edit_Button partnerCode={sanitize(this.partnerCode)} partnerName={sanitize(this.state.arrMemberPartner.partner_name)} memberNumber={sanitize(item["member_number"])}/></td>
                             </tr>
                         ))}
                         </tbody>
@@ -132,7 +132,7 @@ class Edit_Button extends React.Component {
   render(){
     let form_edit;
     if (this.state.form_opened) {
-      form_edit = <Form_Edit_Member show={this.state.form_opened} close={this.closeForm} partnerCode={this.props.partnerCode} memberNumber={this.props.memberNumber}/>;
+      form_edit = <Form_Edit_Member show={this.state.form_opened} close={this.closeForm} partnerCode={this.props.partnerCode} partnerName={this.props.partnerName} memberNumber={this.props.memberNumber}/>;
     } else {
       form_edit = null;
     }
