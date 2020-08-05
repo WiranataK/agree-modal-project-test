@@ -7,8 +7,8 @@ import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 export class Form_Edit extends React.Component{
   constructor(props) {
     super(props);
-    this.partnerCode = this.props.partnerCode;
     this.state = {
+      partner_code: this.props.partnerCode,
       partner_name: "",
       nickname: "",
       birthplace: "",
@@ -30,7 +30,7 @@ export class Form_Edit extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails?partner_code='+this.partnerCode, { headers: { Authorization: AuthStr } })
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails?partner_code='+this.state.partner_code, { headers: { Authorization: AuthStr } })
     .then(response => {
       // If request is good...
       var data = response.data;
@@ -101,6 +101,34 @@ export class Form_Edit extends React.Component{
         ...this.state[listName].slice(index+1)
       ]
     });
+  }
+  submit(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails', this.state ,{ headers: { Authorization: AuthStr } })
+    .then((response) => {
+        console.log(response);
+        alert("success");
+        this.props.close();
+      }, (error) => {
+        console.log(error);
+        alert(error)
+      });
+  }
+  delete(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails?partner_code='+this.state.partner_code, { headers: { Authorization: AuthStr } })
+    .then((response) => {
+        console.log(response);
+        alert("success");
+        this.props.close();
+      }, (error) => {
+        console.log(error);
+        alert(error)
+      });
   }
   render(){
     return (
@@ -402,7 +430,7 @@ export class Form_Edit extends React.Component{
                   </Row>
                   <Row>
                       <Col>
-                          <Button id="btnprimary2">
+                          <Button id="btnprimary2" onClick={(e) => this.delete()}>
                               <Col xs={"auto"}>
 
                               </Col>
@@ -410,7 +438,7 @@ export class Form_Edit extends React.Component{
                           </Button>
                       </Col>
                       <Col>
-                          <Button id="btnprimary3">
+                          <Button id="btnprimary3" onClick={(e) => this.submit()}>
                               <Col xs={"auto"}>
 
                               </Col>
