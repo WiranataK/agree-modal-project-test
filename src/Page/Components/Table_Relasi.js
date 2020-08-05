@@ -71,10 +71,10 @@ export class Table_Relasi extends React.Component {
                         {this.state.arrRelasi.map((item, index) => (
                             <tr>
                                 <td>{index+1}</td>
-                                <td>{sanitize(item["parent_partner"])}</td>
+                                <td>{sanitize(item["parent_partner"])+" ("+sanitize(item["parent_partner_name"])+")"}</td>
                                 <td>{sanitize(item["relation_type"])}</td>
                                 <td>{sanitize(item["child_type"])}</td>
-                                <td>{sanitize(item["child_partner"])}</td>
+                                <td>{sanitize(item["child_partner"])+" ("+sanitize(item["child_partner_name"])+")"}</td>
                                 <td><Edit_Button parent_partner={item["parent_partner"]} parent_type={item["parent_type"]} relation_code={item["relation_code"]} relation_type={item["relation_type"]} child_partner={item["child_partner"]} child_type={item["child_type"]}/></td>
                             </tr>
                         ))}
