@@ -139,22 +139,6 @@ export class Form_Edit extends React.Component{
               <Modal.Body id="body">
                   <Row>
                       <Col>
-                          <Form.Label>Perusahaan</Form.Label>
-                          <Form.Control id="pilper" as="select" placeholder="Pilih Perusahaan">
-                              <option>Pilih Perusahaan</option>
-                              <option>...</option>
-                          </Form.Control>
-                      </Col>
-                      <Col>
-                          <Form.Label>Jenis Keanggotaan</Form.Label>
-                          <Form.Control as="select" placeholder="Pilih Jenis Keanggotaan">
-                              <option>Pilih Jenis Keanggotaan</option>
-                              <option>...</option>
-                          </Form.Control>
-                      </Col>
-                  </Row>
-                  <Row>
-                      <Col>
                           <Form.Control placeholder="Nama" value={this.state.partner_name} onChange={(e) => this.updateData("partner_name",e)}/>
                       </Col>
                       <Col>
