@@ -5,59 +5,59 @@ import '../css/Form.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
 export class Form_Edit extends React.Component{
-    constructor(props) {
-      super(props);
-      this.partnerCode = this.props.partnerCode;
-      this.state = {
-        partner_name: "",
-        nickname: "",
-        birthplace: "",
-        date_of_birth: "",
-        gender: "",
-        religion: "",
-        language: "",
-        nationality: "",
-        partner_type: [],
-        address: [],
-        communication: [],
-        identification: [],
-        account_name: "",
-        bank_code: "",
-        account_number: "",
-        payment_method: ""
-      };
+  constructor(props) {
+    super(props);
+    this.partnerCode = this.props.partnerCode;
+    this.state = {
+      partner_name: "",
+      nickname: "",
+      birthplace: "",
+      date_of_birth: "",
+      gender: "",
+      religion: "",
+      language: "",
+      nationality: "",
+      partner_type: [],
+      address: [],
+      communication: [],
+      identification: [],
+      account_name: "",
+      bank_code: "",
+      account_number: "",
+      payment_method: ""
+    };
 
-      let cookies = new Cookies();
-      let token = cookies.get('accessToken');
-      const AuthStr = 'Bearer '.concat(token);
-      axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails?partner_code='+this.partnerCode, { headers: { Authorization: AuthStr } })
-      .then(response => {
-        // If request is good...
-        var data = response.data;
-        this.setState({
-          partner_name: data["partner_name"],
-          nickname: data["nickname"],
-          birthplace: data["birthplace"],
-          date_of_birth: data["date_of_birth"],
-          gender: data["gender"],
-          religion: data["religion"],
-          language: data["language"],
-          nationality: data["nationality"],
-          partner_type: data["partner_type"],
-          address: data["addresses"],
-          communication: data["communications"],
-          identification: data["identities"],
-          account_name: data["bank"]["account_name"],
-          bank_code: data["bank"]["bank_code"],
-          account_number: data["bank"]["account_number"],
-          payment_method: data["bank"]["payment_method"]
-        });
-        this.render();
-      })
-      .catch((error) => {
-        alert("error :can't get partner data");
-        this.props.close()
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/partnerdetails?partner_code='+this.partnerCode, { headers: { Authorization: AuthStr } })
+    .then(response => {
+      // If request is good...
+      var data = response.data;
+      this.setState({
+        partner_name: data["partner_name"],
+        nickname: data["nickname"],
+        birthplace: data["birthplace"],
+        date_of_birth: data["date_of_birth"],
+        gender: data["gender"],
+        religion: data["religion"],
+        language: data["language"],
+        nationality: data["nationality"],
+        partner_type: data["partner_type"],
+        address: data["addresses"],
+        communication: data["communications"],
+        identification: data["identities"],
+        account_name: data["bank"]["account_name"],
+        bank_code: data["bank"]["bank_code"],
+        account_number: data["bank"]["account_number"],
+        payment_method: data["bank"]["payment_method"]
       });
+      this.render();
+    })
+    .catch((error) => {
+      alert("error :can't get partner data");
+      this.props.close()
+    });
 
 
   }
