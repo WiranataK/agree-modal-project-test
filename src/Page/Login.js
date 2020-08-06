@@ -54,7 +54,7 @@ class Login extends React.Component{
           // Example on how to get cookies
           console.log(cookies.get('refreshToken'));
           console.log(cookies.get('accessToken'));
-          this.props.history.push('/Member');
+          this.props.history.push('/Keanggotaan');
         })
         .catch(error => {
             console.log(error.response);
@@ -68,7 +68,7 @@ class Login extends React.Component{
                 <Container>
                     <Row>
                         <Col>
-                            <h1>Selamat datang di</h1>
+                            <h1 id="header1">Selamat datang di</h1>
                             <img id="logo" src={Logo}/>
                             <Form onSubmit={this.submitForm}>
                                 <Form.Group>
