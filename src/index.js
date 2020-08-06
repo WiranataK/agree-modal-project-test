@@ -19,7 +19,7 @@ ReactDOM.render(
      <Router>
       <Switch>
         <Route exact path="/">
-          <Keanggotaan/>
+          <Login/>
         </Route>
         <Route path="/Keanggotaan">
           <Keanggotaan/>
