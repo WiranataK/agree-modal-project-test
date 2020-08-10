@@ -18,7 +18,7 @@ export class Sidebar extends React.Component{
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link className="sidebaritem1" href="/">
+                        <Nav.Link className="sidebaritem1" href="/Perusahaan">
                             <Row>
                                 <Col md="auto"><FaRegBuilding/></Col>
                                 <Col>Perusahaan</Col>

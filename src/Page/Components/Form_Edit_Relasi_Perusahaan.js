@@ -68,20 +68,20 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
                 <Row>
                     <Col>
                         <Form.Label>Kode Relasi</Form.Label>
-                        <Form.Control placeholder="Kode Relasi" value={this.state.relation_code} onChange={(e) => this.updateData("relation_code",e)}/>
+                        <Form.Control placeholder="Kode Relasi" value={this.state.new_relation_code} onChange={(e) => this.updateData("relation_code",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Id Induk Perusahaan</Form.Label>
-                        <Form.Control placeholder="Id Induk Perusahaan" value={this.state.parent_business} onChange={(e) => this.updateData("parent_business",e)}/>
+                        <Form.Control placeholder="Id Induk Perusahaan" value={this.state.new_parent_business} onChange={(e) => this.updateData("parent_business",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Id Anak Perusahaan</Form.Label>
-                        <Form.Control placeholder="Id Anak Perusahaan" value={this.state.child_business} onChange={(e) => this.updateData("child_business",e)}/>
+                        <Form.Control placeholder="Id Anak Perusahaan" value={this.state.new_child_business} onChange={(e) => this.updateData("child_business",e)}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Button id="btnprimary2">
+                        <Button id="btnprimary2" onClick={(e) => this.delete()}>
                             <Col xs={"auto"}>
 
                             </Col>
@@ -89,7 +89,7 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
                         </Button>
                     </Col>
                     <Col>
-                        <Button id="btnprimary3">
+                        <Button id="btnprimary3" onClick={(e) => this.submit()}>
                             <Col xs={"auto"}>
 
                             </Col>

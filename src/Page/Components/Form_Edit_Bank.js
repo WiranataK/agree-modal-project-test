@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 import '../css/Form.css';
 import { Modal, Button, Row, Col, Form,  } from 'react-bootstrap';
 
@@ -34,7 +36,7 @@ export class Form_Edit_Bank extends React.Component{
       });
     })
     .catch((error) => {
-      alert("error :can't get partner data");
+      alert("error :can't get Bank data");
       this.props.close()
     });
   }

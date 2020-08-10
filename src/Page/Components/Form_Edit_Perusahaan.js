@@ -36,7 +36,7 @@ export class Form_Edit_Perusahaan extends React.Component{
       });
     })
     .catch((error) => {
-      alert("error :can't get partner data");
+      alert("error :can't get Perusahaan data");
       this.props.close()
     });
   }
@@ -63,7 +63,7 @@ export class Form_Edit_Perusahaan extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/companydetails?business_code='+this.state.business_code' ,{ headers: { Authorization: AuthStr } })
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/companydetails?business_code='+this.state.business_code,{ headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");
