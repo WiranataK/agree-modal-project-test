@@ -63,7 +63,7 @@ export class Form_Edit_Bank extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/bankdetails?partner_code='+this.state.partner_code, { headers: { Authorization: AuthStr } })
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/bankdetails?bank_code='+this.state.bank_code, { headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");

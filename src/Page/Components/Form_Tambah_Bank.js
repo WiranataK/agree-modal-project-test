@@ -52,10 +52,6 @@ export class Form_Tambah_Bank extends React.Component{
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Label>Kode Bank</Form.Label>
-                        <Form.Control placeholder="Kode Bank" value={this.state.bank_code} onChange={(e) => this.updateData("bank_code",e)}/>
-                    </Col>
-                    <Col>
                         <Form.Label>Nama Bank</Form.Label>
                         <Form.Control placeholder="Nama Bank" value={this.state.bank_name} onChange={(e) => this.updateData("bank_name",e)}/>
                     </Col>

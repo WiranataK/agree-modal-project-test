@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Row } from 'react-bootstrap';
 import sanitize from '../helper/sanitizer.js';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 import '../css/Table_CSS.css';
 import { Form_Edit_Bank } from "./Form_Edit_Bank";
 
@@ -13,103 +15,67 @@ export class Table_Bank extends React.Component {
     this.initData()
   }
 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  initData(){
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievebank', { headers: { Authorization: AuthStr } })
+      .then(response => {
+        var arrBank = response.data
+        arrBank.forEach((bank, i) => {
+          var address = sanitize(bank["street"]) + ", ";
+          address += sanitize(bank["city"]) + ", ";
+          address += sanitize(bank["state"]) + ", ";
+          address += sanitize(bank["country"]) + ", ";
+          address += sanitize(bank["zip_code"]);
+          bank["address"] = address
+        });
 
-  async initData(){
-      // let cookies = new Cookies();
-      // let token = cookies.get('accessToken');
-      // const AuthStr = 'Bearer '.concat(token);
-      // axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
-      //  .then(response => {
-      //    var arrBank = response.data
-      //    arrBank.forEach((partner, i) => {
-      //      var types = ""
-      //      partner["partner_type"].forEach((type, j) => {
-      //          if(j>0){
-      //            types +=","
-      //          }
-      //          types += sanitize(type)
-      //      });
-      //      partner["partner_type"] = types
-      //    });
-      //
-      //    this.setState({
-      //      arrBank:arrBank
-      //    });
-      //  })
-      //  .catch((error) => {
-      //     console.log('error ' + error);
-      //  });
-      //
-      await this.sleep(1000);
-      this.setState({
-       arrBank:[
-         {
-           bank_group:"bank_group",
-           bank_code:"bank_code",
-           bank_name:"bank_name",
-           address:"address",
-         },
-         {
-           bank_group:"bank_group",
-           bank_code:"bank_code",
-           bank_name:"bank_name",
-           address:"address",
-         },
-         {
-           bank_group:"bank_group",
-           bank_code:"bank_code",
-           bank_name:"bank_name",
-           address:"address",
-         },
-         {
-           bank_group:"bank_group",
-           bank_code:"bank_code",
-           bank_name:"bank_name",
-           address:"address",
-         },
-       ]
+        this.setState({
+          arrBank:arrBank
+        });
+      })
+      .catch((error) => {
+        console.log('error ' + error);
       });
-    }
-    render(){
-      return (
-          <React.Fragment>
-              <Row className="containers">
-                  <Row>
-                      <h1>Daftar Bank</h1>
-                  </Row>
-                  <Row>
-                      <Table className="table" responsive striped hover variant="light" id="tablePartner">
-                          <thead className="head">
-                              <tr>
-                                  <th>No</th>
-                                  <th>Kode Grup Bank</th>
-                                  <th>Kode Bank</th>
-                                  <th>Nama</th>
-                                  <th>Alamat</th>
-                                  <th></th>
-                              </tr>
-                          </thead>
-                          <tbody className="body">
-                          {this.state.arrBank.map((item, index) => (
-                              <tr>
-                                  <td>{index+1}</td>
-                                  <td>{sanitize(item["bank_group"])}</td>
-                                  <td>{sanitize(item["bank_code"])}</td>
-                                  <td>{sanitize(item["bank_name"])}</td>
-                                  <td>{sanitize(item["address"])}</td>
-                                  <td><Edit_Button bankCode={sanitize(item["bank_code"])}/></td>
-                              </tr>
-                          ))}
-                          </tbody>
-                      </Table>
-                  </Row>
-              </Row>
-          </React.Fragment>
-      )
-    }
+  }
+  render(){
+    return (
+        <React.Fragment>
+            <Row className="containers">
+                <Row>
+                    <h1>Daftar Bank</h1>
+                </Row>
+                <Row>
+                    <Table className="table" responsive striped hover variant="light" id="tablePartner">
+                        <thead className="head">
+                            <tr>
+                                <th>No</th>
+                                <th>Kode Grup Bank</th>
+                                <th>Kode Bank</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody className="body">
+                        {this.state.arrBank.map((item, index) => (
+                            <tr>
+                                <td>{index+1}</td>
+                                <td>{sanitize(item["bank_group"])}</td>
+                                <td>{sanitize(item["bank_code"])}</td>
+                                <td>{sanitize(item["bank_name"])}</td>
+                                <td>{sanitize(item["address"])}</td>
+                                <td><Edit_Button bankCode={sanitize(item["bank_code"])}/></td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                </Row>
+            </Row>
+        </React.Fragment>
+    )
+  }
 }
 
 class Edit_Button extends React.Component {
