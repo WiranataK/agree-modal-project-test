@@ -13,6 +13,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Perusahaan from './Page/Perusahaan';
+import Relasi_Perusahaan from './Page/Relasi_Perusahaan';
+import Bank from './Page/Bank';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,6 +35,15 @@ ReactDOM.render(
         </Route>
         <Route path="/MemberPartner/:partner_code">
           <Member_Partner/>
+        </Route>
+        <Route path="/Perusahaan">
+          <Perusahaan/>
+        </Route>
+        <Route path="/RelasiPerusahaan">
+          <Relasi_Perusahaan/>
+        </Route>
+        <Route path="/Bank">
+          <Bank/>
         </Route>
       </Switch>
     </Router>
