@@ -86,7 +86,7 @@ export class Table_Relasi_Perusahaan extends React.Component {
           <React.Fragment>
               <Row className="containers">
                   <Row>
-                      <h1>Daftar Perusahaan</h1>
+                      <h1>Daftar Relasi Perusahaan</h1>
                   </Row>
                   <Row>
                       <Table className="table" responsive striped hover variant="light" id="tablePartner">
