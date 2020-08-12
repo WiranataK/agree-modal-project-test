@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Row } from 'react-bootstrap';
 import sanitize from '../helper/sanitizer.js'
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 import '../css/Table_CSS.css';
 import { Form_Edit_Relasi_Perusahaan } from "./Form_Edit_Relasi_Perusahaan";
 
@@ -13,73 +15,21 @@ export class Table_Relasi_Perusahaan extends React.Component {
     this.initData()
   }
 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  initData(){
+      let cookies = new Cookies();
+      let token = cookies.get('accessToken');
+      const AuthStr = 'Bearer '.concat(token);
+      axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrieveperusahaanrelation', { headers: { Authorization: AuthStr } })
+       .then(response => {
+         var arrRelPerusahaan = response.data
+         this.setState({
+           arrRelPerusahaan:arrRelPerusahaan
+         });
+       })
+       .catch((error) => {
+          console.log('error ' + error);
+       });
 
-  async initData(){
-      // let cookies = new Cookies();
-      // let token = cookies.get('accessToken');
-      // const AuthStr = 'Bearer '.concat(token);
-      // axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
-      //  .then(response => {
-      //    var arrRelPerusahaan = response.data
-      //    arrRelPerusahaan.forEach((partner, i) => {
-      //      var types = ""
-      //      partner["partner_type"].forEach((type, j) => {
-      //          if(j>0){
-      //            types +=","
-      //          }
-      //          types += sanitize(type)
-      //      });
-      //      partner["partner_type"] = types
-      //    });
-      //
-      //    this.setState({
-      //      arrRelPerusahaan:arrRelPerusahaan
-      //    });
-      //  })
-      //  .catch((error) => {
-      //     console.log('error ' + error);
-      //  });
-      //
-      await this.sleep(1000);
-      this.setState({
-       arrRelPerusahaan:[
-         {
-           relation_type:"relation_type",
-           relation_code:"relation_code",
-           parent_name:"parent_name",
-           parent_partner_code:"parent_partner_code",
-           child_name:"child_name",
-           child_partner_code:"child_partner_code"
-         },
-         {
-           relation_type:"relation_type",
-           relation_code:"relation_code",
-           parent_name:"parent_name",
-           parent_partner_code:"parent_partner_code",
-           child_name:"child_name",
-           child_partner_code:"child_partner_code"
-         },
-         {
-           relation_type:"relation_type",
-           relation_code:"relation_code",
-           parent_name:"parent_name",
-           parent_partner_code:"parent_partner_code",
-           child_name:"child_name",
-           child_partner_code:"child_partner_code"
-         },
-         {
-           relation_type:"relation_type",
-           relation_code:"relation_code",
-           parent_name:"parent_name",
-           parent_partner_code:"parent_partner_code",
-           child_name:"child_name",
-           child_partner_code:"child_partner_code"
-         },
-       ]
-      });
     }
     render(){
       return (
@@ -107,10 +57,10 @@ export class Table_Relasi_Perusahaan extends React.Component {
                                   <td>{index+1}</td>
                                   <td>{sanitize(item["relation_code"])}</td>
                                   <td>{sanitize(item["parent_name"])}</td>
-                                  <td>{sanitize(item["parent_partner_code"])}</td>
+                                  <td>{sanitize(item["parent_business"])}</td>
                                   <td>{sanitize(item["child_name"])}</td>
-                                  <td>{sanitize(item["child_partner_code"])}</td>
-                                  <td><Edit_Button old_relation_type={sanitize(item["relation_type"])} old_relation_code={sanitize(item["relation_code"])} old_parent_business={sanitize(item["parent_partner_code"])} old_child_business={sanitize(item["child_partner_code"])}/></td>
+                                  <td>{sanitize(item["child_business"])}</td>
+                                  <td><Edit_Button old_relation_type={sanitize(item["relation_type"])} old_relation_code={sanitize(item["relation_code"])} old_parent_business={sanitize(item["parent_business"])} old_child_business={sanitize(item["child_business"])}/></td>
                               </tr>
                           ))}
                           </tbody>

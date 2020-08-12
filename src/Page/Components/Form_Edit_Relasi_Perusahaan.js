@@ -27,7 +27,7 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/companyrelationdetails', this.state ,{ headers: { Authorization: AuthStr } })
+    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/perusahaanrelationdetails', this.state ,{ headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");
@@ -41,7 +41,7 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/companyrelationdetails', {
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/perusahaanrelationdetails', {
       params: {
             relation_type: this.state.old_relation_type,
             relation_code: this.state.old_relation_code,
@@ -52,7 +52,7 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
     }).then((response) => {
         console.log(response);
         alert("success");
-        // this.props.close();
+        this.props.close();
       }, (error) => {
         console.log(error);
         alert(error)
@@ -68,15 +68,15 @@ export class Form_Edit_Relasi_Perusahaan extends React.Component {
                 <Row>
                     <Col>
                         <Form.Label>Kode Relasi</Form.Label>
-                        <Form.Control placeholder="Kode Relasi" value={this.state.new_relation_code} onChange={(e) => this.updateData("relation_code",e)}/>
+                        <Form.Control placeholder="Kode Relasi" value={this.state.new_relation_code} onChange={(e) => this.updateData("new_relation_code",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Id Induk Perusahaan</Form.Label>
-                        <Form.Control placeholder="Id Induk Perusahaan" value={this.state.new_parent_business} onChange={(e) => this.updateData("parent_business",e)}/>
+                        <Form.Control placeholder="Id Induk Perusahaan" value={this.state.new_parent_business} onChange={(e) => this.updateData("new_parent_business",e)}/>
                     </Col>
                     <Col>
                         <Form.Label>Id Anak Perusahaan</Form.Label>
-                        <Form.Control placeholder="Id Anak Perusahaan" value={this.state.new_child_business} onChange={(e) => this.updateData("child_business",e)}/>
+                        <Form.Control placeholder="Id Anak Perusahaan" value={this.state.new_child_business} onChange={(e) => this.updateData("new_child_business",e)}/>
                     </Col>
                 </Row>
                 <Row>

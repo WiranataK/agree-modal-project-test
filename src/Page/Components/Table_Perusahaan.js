@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Row } from 'react-bootstrap';
 import sanitize from '../helper/sanitizer.js';
+import Cookies from 'universal-cookie';
+import axios from 'axios';
 import '../css/Table_CSS.css';
 import { Form_Edit_Perusahaan } from "./Form_Edit_Perusahaan";
 
@@ -13,65 +15,31 @@ export class Table_Perusahaan extends React.Component {
     this.initData()
   }
 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  initData(){
+      let cookies = new Cookies();
+      let token = cookies.get('accessToken');
+      const AuthStr = 'Bearer '.concat(token);
+      axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrieveperusahaan', { headers: { Authorization: AuthStr } })
+       .then(response => {
+         var arrPerusahaan = response.data
 
-  async initData(){
-      // let cookies = new Cookies();
-      // let token = cookies.get('accessToken');
-      // const AuthStr = 'Bearer '.concat(token);
-      // axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
-      //  .then(response => {
-      //    var arrPerusahaan = response.data
-      //    arrPerusahaan.forEach((partner, i) => {
-      //      var types = ""
-      //      partner["partner_type"].forEach((type, j) => {
-      //          if(j>0){
-      //            types +=","
-      //          }
-      //          types += sanitize(type)
-      //      });
-      //      partner["partner_type"] = types
-      //    });
-      //
-      //    this.setState({
-      //      arrPerusahaan:arrPerusahaan
-      //    });
-      //  })
-      //  .catch((error) => {
-      //     console.log('error ' + error);
-      //  });
-      //
-      await this.sleep(1000);
-      this.setState({
-       arrPerusahaan:[
-         {
-           business_code:"business_code",
-           business_name:"business_name",
-           phone:"phone",
-           address:"address",
-         },
-         {
-           business_code:"business_code",
-           business_name:"business_name",
-           phone:"phone",
-           address:"address",
-         },
-         {
-           business_code:"business_code",
-           business_name:"business_name",
-           phone:"phone",
-           address:"address",
-         },
-         {
-           business_code:"business_code",
-           business_name:"business_name",
-           phone:"phone",
-           address:"address",
-         },
-       ]
-      });
+         arrPerusahaan.forEach((perusahaan, i) => {
+           var address = sanitize(perusahaan["street"]) + ", ";
+           address += sanitize(perusahaan["city"]) + ", ";
+           address += sanitize(perusahaan["state"]) + ", ";
+           address += sanitize(perusahaan["country"]) + ", ";
+           address += sanitize(perusahaan["zip_code"]);
+           perusahaan["address"] = address
+         });
+
+         this.setState({
+           arrPerusahaan:arrPerusahaan
+         });
+       })
+       .catch((error) => {
+          console.log('error ' + error);
+       });
+
     }
     render(){
       return (
@@ -98,7 +66,7 @@ export class Table_Perusahaan extends React.Component {
                                   <td>{index+1}</td>
                                   <td>{sanitize(item["business_code"])}</td>
                                   <td>{sanitize(item["business_name"])}</td>
-                                  <td>{sanitize(item["phone"])}</td>
+                                  <td>{sanitize(item["phone_number"])}</td>
                                   <td>{sanitize(item["address"])}</td>
                                   <td><Edit_Button businessCode={sanitize(item["business_code"])}/></td>
                               </tr>

@@ -21,7 +21,7 @@ export class Form_Edit_Perusahaan extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/companydetails?business_code='+this.state.business_code, { headers: { Authorization: AuthStr } })
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/perusahaandetails?business_code='+this.state.business_code, { headers: { Authorization: AuthStr } })
     .then(response => {
       // If request is good...
       var data = response.data;
@@ -49,7 +49,7 @@ export class Form_Edit_Perusahaan extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/companydetails', this.state ,{ headers: { Authorization: AuthStr } })
+    axios.put(process.env.REACT_APP_BACKEND_URL+'/api/perusahaandetails', this.state ,{ headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");
@@ -63,7 +63,7 @@ export class Form_Edit_Perusahaan extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/companydetails?business_code='+this.state.business_code,{ headers: { Authorization: AuthStr } })
+    axios.delete(process.env.REACT_APP_BACKEND_URL+'/api/perusahaandetails?business_code='+this.state.business_code,{ headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");
