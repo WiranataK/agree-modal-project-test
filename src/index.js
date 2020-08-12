@@ -33,12 +33,6 @@ ReactDOM.render(
         <Route path="/Perusahaan">
           <Perusahaan/>
         </Route>
-        <Route path="/RelasiPerusahaan">
-          <Relasi_Perusahaan/>
-        </Route>
-        <Route path="/Bank">
-          <Bank/>
-        </Route>
       </Switch>
     </Router>
   </React.StrictMode>,

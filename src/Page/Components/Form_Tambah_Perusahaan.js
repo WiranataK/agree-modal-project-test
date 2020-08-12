@@ -26,7 +26,7 @@ export class Form_Tambah_Perusahaan extends React.Component{
     let cookies = new Cookies();
     let token = cookies.get('accessToken');
     const AuthStr = 'Bearer '.concat(token);
-    axios.post(process.env.REACT_APP_BACKEND_URL+'/api/companydetails', this.state ,{ headers: { Authorization: AuthStr } })
+    axios.post(process.env.REACT_APP_BACKEND_URL+'/api/perusahaandetails', this.state ,{ headers: { Authorization: AuthStr } })
     .then((response) => {
         console.log(response);
         alert("success");
