@@ -24,8 +24,30 @@ export class Form_Tambah_Member extends React.Component{
       nationality: "",
       address: [],
       communication: [],
-      identification: []
+      identification: [],
+      partner_list: []
     };
+
+    let cookies = new Cookies();
+    let token = cookies.get('accessToken');
+    const AuthStr = 'Bearer '.concat(token);
+    axios.get(process.env.REACT_APP_BACKEND_URL+'/api/retrievepartner', { headers: { Authorization: AuthStr } })
+     .then(response => {
+       var arrPartner = response.data
+       var partner_list = []
+       arrPartner.forEach((partner, i) => {
+         var item = {}
+         item["partner_code"] = partner["partner_code"]
+         item["partner_name"] = partner["partner_name"]
+         partner_list.push(item)
+       });
+       this.setState({
+         partner_list:partner_list
+       })
+     })
+     .catch((error) => {
+        console.log('error ' + error);
+     });
   }
   updateData(property,event){
     this.setState({
@@ -83,13 +105,23 @@ export class Form_Tambah_Member extends React.Component{
                 <Row>
                     <Col>
                         <Form.Label>Nama Partner</Form.Label>
-                        <Form.Control/>
+                        <Form.Control as="select" value={this.state.partner_code} onChange={(e) => this.updateData("partner_code",e)}>
+                            <option value="" hidden>Nama Partner</option>
+                            {this.state.partner_list.map((item, index) => (
+                            <option value={item["partner_code"]}>{item["partner_name"]}</option>
+                            ))}
+                        </Form.Control>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <Form.Label>No. Partner</Form.Label>
-                        <Form.Control value={this.state.partner_code} onChange={(e) => this.updateData("partner_code",e)}/>
+                        <Form.Control as="select" value={this.state.partner_code} onChange={(e) => this.updateData("partner_code",e)}>
+                            <option value="" hidden>No. Partner</option>
+                            {this.state.partner_list.map((item, index) => (
+                            <option value={item["partner_code"]}>{item["partner_code"]}</option>
+                            ))}
+                        </Form.Control>
                     </Col>
                 </Row>
                 <Row>

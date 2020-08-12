@@ -50,7 +50,7 @@ export class Form_Tambah_Relasi extends React.Component{
     .then((response) => {
         console.log(response);
         alert("success");
-        // this.props.close();
+        this.props.close();
       }, (error) => {
         console.log(error);
         alert(error)
@@ -66,7 +66,7 @@ export class Form_Tambah_Relasi extends React.Component{
               <Row>
                   <Col>
                       <Form.Label>Parent Partner</Form.Label>
-                      <Form.Control as="select" value={this.state.new_parent_partner} onChange={(e) => this.updateData("new_parent_partner",e)}>
+                      <Form.Control as="select" value={this.state.parent_partner} onChange={(e) => this.updateData("parent_partner",e)}>
                           <option value="" hidden>Pilih Parent Partner</option>
                           {this.state.partner_list.map((item, index) => (
                           <option value={item["partner_code"]}>{item["partner_code"]+" ("+item["partner_name"]+")"}</option>
@@ -75,7 +75,7 @@ export class Form_Tambah_Relasi extends React.Component{
                   </Col>
                   <Col>
                       <Form.Label>Child Partner</Form.Label>
-                      <Form.Control as="select" value={this.state.new_child_partner} onChange={(e) => this.updateData("new_child_partner",e)}>
+                      <Form.Control as="select" value={this.state.child_partner} onChange={(e) => this.updateData("child_partner",e)}>
                           <option value="" hidden>Pilih Child Partner</option>
                           {this.state.partner_list.map((item, index) => (
                           <option value={item["partner_code"]}>{item["partner_code"]+" ("+item["partner_name"]+")"}</option>
@@ -86,17 +86,17 @@ export class Form_Tambah_Relasi extends React.Component{
               <Row>
                   <Col>
                       <Form.Label>Parent Type</Form.Label>
-                      <Form.Control  id="fixing2" placeholder="Parent Type" value={this.state.new_parent_type} onChange={(e) => this.updateData("new_parent_type",e)}></Form.Control>
+                      <Form.Control  id="fixing2" placeholder="Parent Type" value={this.state.parent_type} onChange={(e) => this.updateData("parent_type",e)}></Form.Control>
                   </Col>
                   <Col>
                       <Form.Label>Child Type</Form.Label>
-                      <Form.Control  id="fixing2" placeholder="Parent Type" value={this.state.new_child_type} onChange={(e) => this.updateData("new_child_type",e)}></Form.Control>
+                      <Form.Control  id="fixing2" placeholder="Parent Type" value={this.state.child_type} onChange={(e) => this.updateData("child_type",e)}></Form.Control>
                   </Col>
               </Row>
               <Row>
                   <Col>
                       <Form.Label>Tipe Relasi</Form.Label>
-                      <Form.Control as="select" value={this.state.new_relation_code} onChange={(e) => this.updateData("new_relation_code",e)}>
+                      <Form.Control as="select" value={this.state.relation_code} onChange={(e) => this.updateData("relation_code",e)}>
                           <option value="" disabled hidden>Pilih Tipe Relasi</option>
                           <option value="101">One To One</option>
                           <option value="102">One To Many</option>
