@@ -63,7 +63,7 @@ class Table_Member_Partner extends React.Component {
         <React.Fragment>
             <Row className="containers">
                 <Row>
-                    <h1>Daftar Member Partner</h1>
+                    <h1 style={{width: "auto"}}>Daftar Member Partner</h1>
                 </Row>
                 <Row>
                     <Table className="table" responsive striped hover variant="light" id="tableMemberPartner">
