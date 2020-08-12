@@ -4,6 +4,8 @@ import { Form_Tambah } from "./Form_Tambah";
 import { Tambah_Data } from "./Tambah_Data";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
+import Table_Partner from "./Table_Partner";
+import { Table_Member } from "./Table_Member";
 
 class Tab extends React.Component {
   static propTypes = {
@@ -142,8 +144,12 @@ export class Header extends React.Component {
           <Row>
             <div class="col">
               <Tabs>
-                <div label="Data Partner"></div>
-                <div label="Member"></div>
+                <div label="Data Partner">
+                  <Table_Partner />
+                </div>
+                <div label="Member">
+                  <Table_Member />
+                </div>
                 <div label="Relasi"></div>
               </Tabs>
             </div>
