@@ -27,12 +27,6 @@ ReactDOM.render(
         <Route path="/Keanggotaan">
           <Keanggotaan/>
         </Route>
-        <Route path="/Member">
-          <Member/>
-        </Route>
-        <Route path="/Relasi">
-          <Relasi/>
-        </Route>
         <Route path="/MemberPartner/:partner_code">
           <Member_Partner/>
         </Route>

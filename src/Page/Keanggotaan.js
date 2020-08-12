@@ -11,17 +11,8 @@ function Keanggotaan() {
   return (
     <React.Fragment>
       <Check_Token />
-      <Table_Partner />
       <Header />
       <Sidebar active="Keanggotaan" />
-      {/* <Router>
-        <Switch>
-          <Route exact path="/Identification_Screen" component={Identification_Screen} />
-          <Route path="/Partner_Address" component={Partner_Address} />
-          <Route path="/Partner_Communication" component={Partner_Communication} />
-          <Route path="/Member_Screen" component={Member_Screen} />
-        </Switch>
-      </Router> */}
     </React.Fragment>
   );
 }
