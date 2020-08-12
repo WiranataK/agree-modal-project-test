@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/Header.css";
 import { Form_Tambah } from "./Form_Tambah";
+import { Form_Tambah_Member } from "./Form_Tambah_Member";
+import { Form_Tambah_Relasi } from "./Form_Tambah_Relasi";
 import { Tambah_Data } from "./Tambah_Data";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
@@ -50,10 +52,12 @@ class Tabs extends React.Component {
     this.state = {
       activeTab: this.props.children[0].props.label,
     };
+    this.props.activeTabCallback(this.props.children[0].props.label)
   }
 
   onClickTabItem = (tab) => {
     this.setState({ activeTab: tab });
+    this.props.activeTabCallback(tab);
   };
 
   render() {
@@ -110,9 +114,11 @@ export class Header extends React.Component {
     super(props);
     this.state = {
       form_opened: false,
+      activeTab: ""
     };
     this.openForm = this.openForm.bind(this);
     this.closeForm = this.closeForm.bind(this);
+    this.changeActiveTab = this.changeActiveTab.bind(this);
   }
   openForm() {
     this.setState({
@@ -124,14 +130,25 @@ export class Header extends React.Component {
       form_opened: false,
     });
   }
+  changeActiveTab(activeTab) {
+    this.setState({
+      activeTab: activeTab,
+    });
+  }
   render() {
-    let form_tambah;
+    var form_tambah = null;
     if (this.state.form_opened) {
-      form_tambah = (
-        <Form_Tambah show={this.state.form_opened} close={this.closeForm} />
-      );
-    } else {
-      form_tambah = null;
+      switch(this.state.activeTab) {
+        case "Data Partner":
+          form_tambah = <Form_Tambah show={this.state.form_opened} close={this.closeForm} />;
+          break;
+        case "Member":
+          form_tambah = <Form_Tambah_Member show={this.state.form_opened} close={this.closeForm} />;
+          break;
+        case "Relasi":
+          form_tambah = <Form_Tambah_Relasi show={this.state.form_opened} close={this.closeForm} />;
+          break;
+      }
     }
     return (
       <React.Fragment>
@@ -143,7 +160,7 @@ export class Header extends React.Component {
           </Row>
           <Row>
             <div class="col">
-              <Tabs>
+              <Tabs activeTabCallback={this.changeActiveTab}>
                 <div label="Data Partner">
                   <Table_Partner />
                 </div>
